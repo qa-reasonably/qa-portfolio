@@ -1,0 +1,231 @@
+{
+  "info": {
+    "_postman_id": "405e7141-a64a-417f-8e92-48d7400e52df",
+    "name": "Users - Read",
+    "schema": "https://schema.getpostman.com/json/collection/v2.1.0/collection.json",
+    "_exporter_id": "51643770",
+    "_collection_link": "https://go.postman.co/collection/51643770-405e7141-a64a-417f-8e92-48d7400e52df?source=collection_link"
+  },
+  "item": [
+    {
+      "name": "List Users (page=1)",
+      "event": [
+        {
+          "listen": "test",
+          "script": {
+            "exec": [
+              "pm.test(\"List users returns data array\", function () {\r",
+              "  const json = pm.response.json();\r",
+              "  pm.expect(json).to.have.property(\"data\");\r",
+              "  pm.expect(json.data).to.be.an(\"array\").that.is.not.empty;\r",
+              "});\r",
+              "\r",
+              "pm.test(\"Each user has id and email\", function () {\r",
+              "  const json = pm.response.json();\r",
+              "  json.data.forEach(u => {\r",
+              "    pm.expect(u).to.have.property(\"id\");\r",
+              "    pm.expect(u).to.have.property(\"email\");\r",
+              "  });\r",
+              "});\r",
+              ""
+            ],
+            "type": "text/javascript",
+            "packages": {},
+            "requests": {}
+          }
+        }
+      ],
+      "request": {
+        "method": "GET",
+        "header": [],
+        "url": {
+          "raw": "{{baseUrl}}/users?page=1",
+          "host": [
+            "{{baseUrl}}"
+          ],
+          "path": [
+            "users"
+          ],
+          "query": [
+            {
+              "key": "page",
+              "value": "1"
+            }
+          ]
+        }
+      },
+      "response": []
+    },
+    {
+      "name": "List Users (page=2)",
+      "event": [
+        {
+          "listen": "test",
+          "script": {
+            "exec": [
+              "pm.test(\"List users returns data array\", function () {\r",
+              "  const json = pm.response.json();\r",
+              "  pm.expect(json).to.have.property(\"data\");\r",
+              "  pm.expect(json.data).to.be.an(\"array\").that.is.not.empty;\r",
+              "});\r",
+              "\r",
+              "pm.test(\"Each user has id and email\", function () {\r",
+              "  const json = pm.response.json();\r",
+              "  json.data.forEach(u => {\r",
+              "    pm.expect(u).to.have.property(\"id\");\r",
+              "    pm.expect(u).to.have.property(\"email\");\r",
+              "  });\r",
+              "});\r",
+              ""
+            ],
+            "type": "text/javascript",
+            "packages": {},
+            "requests": {}
+          }
+        }
+      ],
+      "request": {
+        "method": "GET",
+        "header": [],
+        "url": {
+          "raw": "{{baseUrl}}/users?page=2",
+          "host": [
+            "{{baseUrl}}"
+          ],
+          "path": [
+            "users"
+          ],
+          "query": [
+            {
+              "key": "page",
+              "value": "2"
+            }
+          ]
+        }
+      },
+      "response": []
+    },
+    {
+      "name": "Single User (id=2)",
+      "event": [
+        {
+          "listen": "test",
+          "script": {
+            "exec": [
+              "pm.test(\"Single user returns correct id\", function () {\r",
+              "  const json = pm.response.json();\r",
+              "  pm.expect(json.data.id).to.eql(parseInt(pm.environment.get(\"userId\"), 10));\r",
+              "});\r",
+              ""
+            ],
+            "type": "text/javascript",
+            "packages": {},
+            "requests": {}
+          }
+        }
+      ],
+      "request": {
+        "method": "GET",
+        "header": [],
+        "url": {
+          "raw": "{{baseUrl}}/users/{{userId}}",
+          "host": [
+            "{{baseUrl}}"
+          ],
+          "path": [
+            "users",
+            "{{userId}}"
+          ]
+        }
+      },
+      "response": []
+    },
+    {
+      "name": "Single User Not Found (id=23)",
+      "event": [
+        {
+          "listen": "test",
+          "script": {
+            "exec": [
+              "pm.test(\"Not found returns 404\", function () {\r",
+              "  pm.expect(pm.response.code).to.eql(404);\r",
+              "});\r",
+              "\r",
+              "pm.test(\"Not found body is empty object\", function () {\r",
+              "  const json = pm.response.json();\r",
+              "  pm.expect(Object.keys(json).length).to.eql(0);\r",
+              "});\r",
+              ""
+            ],
+            "type": "text/javascript",
+            "packages": {},
+            "requests": {}
+          }
+        }
+      ],
+      "request": {
+        "method": "GET",
+        "header": [],
+        "url": {
+          "raw": "{{baseUrl}}/users/{{missingUserId}}",
+          "host": [
+            "{{baseUrl}}"
+          ],
+          "path": [
+            "users",
+            "{{missingUserId}}"
+          ]
+        }
+      },
+      "response": []
+    }
+  ],
+  "auth": {
+    "type": "apikey",
+    "apikey": [
+      {
+        "key": "value",
+        "value": "{{apiKey}}",
+        "type": "string"
+      },
+      {
+        "key": "key",
+        "value": "x-api-key",
+        "type": "string"
+      }
+    ]
+  },
+  "event": [
+    {
+      "listen": "prerequest",
+      "script": {
+        "type": "text/javascript",
+        "packages": {},
+        "requests": {},
+        "exec": [
+          ""
+        ]
+      }
+    },
+    {
+      "listen": "test",
+      "script": {
+        "type": "text/javascript",
+        "packages": {},
+        "requests": {},
+        "exec": [
+          "pm.test(\"Status code is expected\", function () {\r",
+          "  pm.expect(pm.response.code).to.be.oneOf([200, 201, 204, 400, 404]);\r",
+          "});\r",
+          "\r",
+          "pm.test(\"Response is JSON when body exists\", function () {\r",
+          "  if (pm.response.text()) {\r",
+          "    pm.response.to.be.json;\r",
+          "  }\r",
+          "});\r",
+          ""
+        ]
+      }
+    }
+  ]
+}
