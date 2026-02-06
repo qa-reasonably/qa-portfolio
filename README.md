@@ -12,3 +12,6 @@ This repository showcases my hands-on QA work across manual testing, API testing
 - `/devtools` – UI, API, and auth investigation using Chrome DevTools
 - `/api-testing/postman` – API test collections, environments, and assertions
 - `/automation` – UI automation examples
+
+
+Portfolio in progress
