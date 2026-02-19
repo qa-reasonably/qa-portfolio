@@ -1,0 +1,3996 @@
+{
+  "collection": {
+    "_": {
+      "postman_id": "0e946f47-7d7c-4103-8ac6-a0a7a9885d56",
+      "exporter_id": "51643770",
+      "collection_link": "https://go.postman.co/collection/51643770-0e946f47-7d7c-4103-8ac6-a0a7a9885d56?source=collection_link"
+    },
+    "item": [
+      {
+        "id": "95e77fcf-8073-4be4-871f-ac0b6a9507e0",
+        "name": "Register - Success",
+        "request": {
+          "url": {
+            "path": [
+              "register"
+            ],
+            "host": [
+              "{{baseUrl}}"
+            ],
+            "query": [],
+            "variable": []
+          },
+          "method": "POST",
+          "body": {
+            "mode": "raw",
+            "raw": "{\r\n  \"email\": \"eve.holt@reqres.in\",\r\n  \"password\": \"tester1234\"\r\n}\r\n",
+            "options": {
+              "raw": {
+                "language": "json"
+              }
+            }
+          }
+        },
+        "response": [],
+        "event": [
+          {
+            "listen": "test",
+            "script": {
+              "id": "d0f6d381-9e06-4be7-9d55-ce59e8c2b78a",
+              "type": "text/javascript",
+              "packages": {},
+              "exec": [
+                "pm.test(\"Auth success returns token\", function () {\r",
+                "  const json = pm.response.json();\r",
+                "  pm.expect(json).to.have.property(\"token\");\r",
+                "  pm.environment.set(\"token\", json.token);\r",
+                "});\r",
+                ""
+              ],
+              "_lastExecutionId": "0e5e33b3-e090-418c-b016-586d66399085"
+            }
+          }
+        ]
+      },
+      {
+        "id": "7543ce31-5b43-4d06-bf9d-4f793790c28c",
+        "name": "Register - Missing Password",
+        "request": {
+          "url": {
+            "path": [
+              "register"
+            ],
+            "host": [
+              "{{baseUrl}}"
+            ],
+            "query": [],
+            "variable": []
+          },
+          "method": "POST"
+        },
+        "response": [],
+        "event": [
+          {
+            "listen": "test",
+            "script": {
+              "id": "d6340a4e-1ba4-402b-a347-5e83fe21e14f",
+              "type": "text/javascript",
+              "packages": {},
+              "exec": [
+                "pm.test(\"Auth failure returns error message\", function () {\r",
+                "  const json = pm.response.json();\r",
+                "  pm.expect(json).to.have.property(\"error\");\r",
+                "  pm.expect(json.error).to.be.a(\"string\").and.not.empty;\r",
+                "});\r",
+                ""
+              ],
+              "_lastExecutionId": "bc735681-510f-4213-83a4-4d88322d05a4"
+            }
+          }
+        ]
+      },
+      {
+        "id": "fb860729-eef0-42b6-b173-b6b82778aeda",
+        "name": "Login - Success",
+        "request": {
+          "url": {
+            "path": [
+              "login"
+            ],
+            "host": [
+              "{{baseUrl}}"
+            ],
+            "query": [],
+            "variable": []
+          },
+          "method": "POST",
+          "body": {
+            "mode": "raw",
+            "raw": "{\r\n  \"email\": \"eve.holt@reqres.in\",\r\n  \"password\": \"tester1234\"\r\n}\r\n",
+            "options": {
+              "raw": {
+                "language": "json"
+              }
+            }
+          }
+        },
+        "response": [],
+        "event": [
+          {
+            "listen": "test",
+            "script": {
+              "id": "2ddfc9f9-04b2-4752-aec1-5fb7e6008c0c",
+              "type": "text/javascript",
+              "packages": {},
+              "exec": [
+                "pm.test(\"Auth success returns token\", function () {\r",
+                "  const json = pm.response.json();\r",
+                "  pm.expect(json).to.have.property(\"token\");\r",
+                "  pm.environment.set(\"token\", json.token);\r",
+                "});\r",
+                ""
+              ],
+              "_lastExecutionId": "71d4397d-20a3-4a3a-be1e-d41498a93d91"
+            }
+          }
+        ]
+      },
+      {
+        "id": "dcd2467d-1c04-4455-bcd9-c928b6c90f13",
+        "name": "Login - Missing Password",
+        "request": {
+          "url": {
+            "path": [
+              "login"
+            ],
+            "host": [
+              "{{baseUrl}}"
+            ],
+            "query": [],
+            "variable": []
+          },
+          "method": "POST",
+          "body": {
+            "mode": "raw",
+            "raw": "{\r\n  \"email\": \"eve.holt@reqres.in\"\r\n}\r\n",
+            "options": {
+              "raw": {
+                "language": "json"
+              }
+            }
+          }
+        },
+        "response": [],
+        "event": [
+          {
+            "listen": "test",
+            "script": {
+              "id": "e26f6771-ebb7-4539-a6ee-ac53810ad1b6",
+              "type": "text/javascript",
+              "packages": {},
+              "exec": [
+                "pm.test(\"Auth failure returns error message\", function () {\r",
+                "  const json = pm.response.json();\r",
+                "  pm.expect(json).to.have.property(\"error\");\r",
+                "  pm.expect(json.error).to.be.a(\"string\").and.not.empty;\r",
+                "});\r",
+                ""
+              ],
+              "_lastExecutionId": "8018d8c6-2fb0-4163-9b7f-90e6d39f7e75"
+            }
+          }
+        ]
+      }
+    ],
+    "auth": {
+      "type": "apikey",
+      "apikey": [
+        {
+          "type": "string",
+          "value": "x-api-key",
+          "key": "key"
+        },
+        {
+          "type": "string",
+          "value": "{{apiKey}}",
+          "key": "value"
+        }
+      ]
+    },
+    "event": [
+      {
+        "listen": "prerequest",
+        "script": {
+          "id": "ee82ac11-c721-49f1-9879-a544e6b758e4",
+          "type": "text/javascript",
+          "packages": {},
+          "exec": [
+            ""
+          ],
+          "_lastExecutionId": "1445946b-9d00-4d08-b3be-01fadb357c5f"
+        }
+      },
+      {
+        "listen": "test",
+        "script": {
+          "id": "5445a0ab-6c81-4252-bde9-e8fe9b8e6cec",
+          "type": "text/javascript",
+          "packages": {},
+          "exec": [
+            "pm.test(\"Status code is expected\", function () {\r",
+            "  pm.expect(pm.response.code).to.be.oneOf([200, 201, 204, 400, 404]);\r",
+            "});\r",
+            "\r",
+            "pm.test(\"Response is JSON when body exists\", function () {\r",
+            "  if (pm.response.text()) {\r",
+            "    pm.response.to.be.json;\r",
+            "  }\r",
+            "});\r",
+            ""
+          ],
+          "_lastExecutionId": "da7a5f57-6c77-4f8c-81eb-8e75a54e11e1"
+        }
+      }
+    ],
+    "variable": [],
+    "info": {
+      "_postman_id": "0e946f47-7d7c-4103-8ac6-a0a7a9885d56",
+      "name": "Auth FLows",
+      "schema": "https://schema.getpostman.com/json/collection/v2.1.0/collection.json"
+    }
+  },
+  "environment": {
+    "id": "cd26edc3-90a5-45ef-a304-2865c7a81808",
+    "values": []
+  },
+  "globals": {
+    "id": "565c5ede-ac96-4a22-846a-19f9a9a86938",
+    "values": []
+  },
+  "run": {
+    "stats": {
+      "iterations": {
+        "total": 1,
+        "pending": 0,
+        "failed": 0
+      },
+      "items": {
+        "total": 4,
+        "pending": 0,
+        "failed": 0
+      },
+      "scripts": {
+        "total": 12,
+        "pending": 0,
+        "failed": 0
+      },
+      "prerequests": {
+        "total": 4,
+        "pending": 0,
+        "failed": 0
+      },
+      "requests": {
+        "total": 4,
+        "pending": 0,
+        "failed": 4
+      },
+      "tests": {
+        "total": 4,
+        "pending": 0,
+        "failed": 0
+      },
+      "assertions": {
+        "total": 12,
+        "pending": 0,
+        "failed": 8
+      },
+      "testScripts": {
+        "total": 8,
+        "pending": 0,
+        "failed": 0
+      },
+      "prerequestScripts": {
+        "total": 4,
+        "pending": 0,
+        "failed": 0
+      }
+    },
+    "timings": {
+      "responseAverage": 0,
+      "responseMin": 0,
+      "responseMax": 0,
+      "responseSd": 0,
+      "dnsAverage": 0,
+      "dnsMin": 0,
+      "dnsMax": 0,
+      "dnsSd": 0,
+      "firstByteAverage": 0,
+      "firstByteMin": 0,
+      "firstByteMax": 0,
+      "firstByteSd": 0,
+      "started": 1771541529476,
+      "completed": 1771541529804
+    },
+    "executions": [
+      {
+        "cursor": {
+          "position": 0,
+          "iteration": 0,
+          "length": 4,
+          "cycles": 1,
+          "empty": false,
+          "eof": false,
+          "bof": true,
+          "cr": false,
+          "ref": "ec199edf-5586-4649-ad6a-1a5d1dded74f",
+          "httpRequestId": "a4f14f86-9311-488b-a2a8-1e74febd8a7d"
+        },
+        "item": {
+          "id": "95e77fcf-8073-4be4-871f-ac0b6a9507e0",
+          "name": "Register - Success",
+          "request": {
+            "url": {
+              "path": [
+                "register"
+              ],
+              "host": [
+                "{{baseUrl}}"
+              ],
+              "query": [],
+              "variable": []
+            },
+            "method": "POST",
+            "body": {
+              "mode": "raw",
+              "raw": "{\r\n  \"email\": \"eve.holt@reqres.in\",\r\n  \"password\": \"tester1234\"\r\n}\r\n",
+              "options": {
+                "raw": {
+                  "language": "json"
+                }
+              }
+            }
+          },
+          "response": [],
+          "event": [
+            {
+              "listen": "test",
+              "script": {
+                "id": "d0f6d381-9e06-4be7-9d55-ce59e8c2b78a",
+                "type": "text/javascript",
+                "packages": {},
+                "exec": [
+                  "pm.test(\"Auth success returns token\", function () {\r",
+                  "  const json = pm.response.json();\r",
+                  "  pm.expect(json).to.have.property(\"token\");\r",
+                  "  pm.environment.set(\"token\", json.token);\r",
+                  "});\r",
+                  ""
+                ],
+                "_lastExecutionId": "0e5e33b3-e090-418c-b016-586d66399085"
+              }
+            }
+          ]
+        },
+        "request": {
+          "url": {
+            "protocol": "http",
+            "path": [
+              "register"
+            ],
+            "host": [
+              "{{baseurl}}"
+            ],
+            "query": [],
+            "variable": []
+          },
+          "header": [
+            {
+              "key": "Content-Type",
+              "value": "application/json",
+              "system": true
+            },
+            {
+              "key": "x-api-key",
+              "value": "{{apiKey}}",
+              "system": true
+            },
+            {
+              "key": "User-Agent",
+              "value": "PostmanRuntime/7.39.1",
+              "system": true
+            },
+            {
+              "key": "Accept",
+              "value": "*/*",
+              "system": true
+            },
+            {
+              "key": "Cache-Control",
+              "value": "no-cache",
+              "system": true
+            },
+            {
+              "key": "Postman-Token",
+              "value": "62c14240-bdb5-49cf-80c6-adad3e9d321e",
+              "system": true
+            },
+            {
+              "key": "Host",
+              "value": "{{baseurl}}",
+              "system": true
+            },
+            {
+              "key": "Accept-Encoding",
+              "value": "gzip, deflate, br",
+              "system": true
+            },
+            {
+              "key": "Connection",
+              "value": "keep-alive",
+              "system": true
+            }
+          ],
+          "method": "POST",
+          "body": {
+            "mode": "raw",
+            "raw": "{\r\n  \"email\": \"eve.holt@reqres.in\",\r\n  \"password\": \"tester1234\"\r\n}\r\n",
+            "options": {
+              "raw": {
+                "language": "json"
+              }
+            }
+          }
+        },
+        "id": "95e77fcf-8073-4be4-871f-ac0b6a9507e0",
+        "requestError": {
+          "errno": -3008,
+          "code": "ENOTFOUND",
+          "syscall": "getaddrinfo",
+          "hostname": "{{baseurl}}"
+        },
+        "assertions": [
+          {
+            "assertion": "Status code is expected",
+            "skipped": false,
+            "error": {
+              "name": "AssertionError",
+              "index": 0,
+              "test": "Status code is expected",
+              "message": "expected undefined to be one of [ 200, 201, 204, 400, 404 ]",
+              "stack": "AssertionError: expected undefined to be one of [ 200, 201, 204, 400, 404 ]\n   at Object.eval sandbox-script.js:1:1)"
+            }
+          },
+          {
+            "assertion": "Response is JSON when body exists",
+            "skipped": false
+          },
+          {
+            "assertion": "Auth success returns token",
+            "skipped": false,
+            "error": {
+              "name": "JSONError",
+              "index": 0,
+              "test": "Auth success returns token",
+              "message": "\"undefined\" is not valid JSON",
+              "stack": "JSONError: \"undefined\" is not valid JSON\n   at Object.eval sandbox-script.js:1:1)"
+            }
+          }
+        ]
+      },
+      {
+        "cursor": {
+          "ref": "94d10583-c2de-4c20-ae48-c46552d63503",
+          "length": 4,
+          "cycles": 1,
+          "position": 1,
+          "iteration": 0,
+          "httpRequestId": "94575360-dffa-4a92-b27e-c9c2e62d1c0d"
+        },
+        "item": {
+          "id": "7543ce31-5b43-4d06-bf9d-4f793790c28c",
+          "name": "Register - Missing Password",
+          "request": {
+            "url": {
+              "path": [
+                "register"
+              ],
+              "host": [
+                "{{baseUrl}}"
+              ],
+              "query": [],
+              "variable": []
+            },
+            "method": "POST"
+          },
+          "response": [],
+          "event": [
+            {
+              "listen": "test",
+              "script": {
+                "id": "d6340a4e-1ba4-402b-a347-5e83fe21e14f",
+                "type": "text/javascript",
+                "packages": {},
+                "exec": [
+                  "pm.test(\"Auth failure returns error message\", function () {\r",
+                  "  const json = pm.response.json();\r",
+                  "  pm.expect(json).to.have.property(\"error\");\r",
+                  "  pm.expect(json.error).to.be.a(\"string\").and.not.empty;\r",
+                  "});\r",
+                  ""
+                ],
+                "_lastExecutionId": "bc735681-510f-4213-83a4-4d88322d05a4"
+              }
+            }
+          ]
+        },
+        "request": {
+          "url": {
+            "protocol": "http",
+            "path": [
+              "register"
+            ],
+            "host": [
+              "{{baseurl}}"
+            ],
+            "query": [],
+            "variable": []
+          },
+          "header": [
+            {
+              "key": "x-api-key",
+              "value": "{{apiKey}}",
+              "system": true
+            },
+            {
+              "key": "User-Agent",
+              "value": "PostmanRuntime/7.39.1",
+              "system": true
+            },
+            {
+              "key": "Accept",
+              "value": "*/*",
+              "system": true
+            },
+            {
+              "key": "Cache-Control",
+              "value": "no-cache",
+              "system": true
+            },
+            {
+              "key": "Postman-Token",
+              "value": "4898e933-ce48-4b0b-8491-9ab077e6b20d",
+              "system": true
+            },
+            {
+              "key": "Host",
+              "value": "{{baseurl}}",
+              "system": true
+            },
+            {
+              "key": "Accept-Encoding",
+              "value": "gzip, deflate, br",
+              "system": true
+            },
+            {
+              "key": "Connection",
+              "value": "keep-alive",
+              "system": true
+            }
+          ],
+          "method": "POST"
+        },
+        "id": "7543ce31-5b43-4d06-bf9d-4f793790c28c",
+        "requestError": {
+          "errno": -3008,
+          "code": "ENOTFOUND",
+          "syscall": "getaddrinfo",
+          "hostname": "{{baseurl}}"
+        },
+        "assertions": [
+          {
+            "assertion": "Status code is expected",
+            "skipped": false,
+            "error": {
+              "name": "AssertionError",
+              "index": 0,
+              "test": "Status code is expected",
+              "message": "expected undefined to be one of [ 200, 201, 204, 400, 404 ]",
+              "stack": "AssertionError: expected undefined to be one of [ 200, 201, 204, 400, 404 ]\n   at Object.eval sandbox-script.js:1:2)"
+            }
+          },
+          {
+            "assertion": "Response is JSON when body exists",
+            "skipped": false
+          },
+          {
+            "assertion": "Auth failure returns error message",
+            "skipped": false,
+            "error": {
+              "name": "JSONError",
+              "index": 0,
+              "test": "Auth failure returns error message",
+              "message": "\"undefined\" is not valid JSON",
+              "stack": "JSONError: \"undefined\" is not valid JSON\n   at Object.eval sandbox-script.js:1:2)"
+            }
+          }
+        ]
+      },
+      {
+        "cursor": {
+          "ref": "4fe0687e-207a-4980-863e-e0ccf4e51f25",
+          "length": 4,
+          "cycles": 1,
+          "position": 2,
+          "iteration": 0,
+          "httpRequestId": "77ccd205-42f6-4855-828a-0935e5362b26"
+        },
+        "item": {
+          "id": "fb860729-eef0-42b6-b173-b6b82778aeda",
+          "name": "Login - Success",
+          "request": {
+            "url": {
+              "path": [
+                "login"
+              ],
+              "host": [
+                "{{baseUrl}}"
+              ],
+              "query": [],
+              "variable": []
+            },
+            "method": "POST",
+            "body": {
+              "mode": "raw",
+              "raw": "{\r\n  \"email\": \"eve.holt@reqres.in\",\r\n  \"password\": \"tester1234\"\r\n}\r\n",
+              "options": {
+                "raw": {
+                  "language": "json"
+                }
+              }
+            }
+          },
+          "response": [],
+          "event": [
+            {
+              "listen": "test",
+              "script": {
+                "id": "2ddfc9f9-04b2-4752-aec1-5fb7e6008c0c",
+                "type": "text/javascript",
+                "packages": {},
+                "exec": [
+                  "pm.test(\"Auth success returns token\", function () {\r",
+                  "  const json = pm.response.json();\r",
+                  "  pm.expect(json).to.have.property(\"token\");\r",
+                  "  pm.environment.set(\"token\", json.token);\r",
+                  "});\r",
+                  ""
+                ],
+                "_lastExecutionId": "71d4397d-20a3-4a3a-be1e-d41498a93d91"
+              }
+            }
+          ]
+        },
+        "request": {
+          "url": {
+            "protocol": "http",
+            "path": [
+              "login"
+            ],
+            "host": [
+              "{{baseurl}}"
+            ],
+            "query": [],
+            "variable": []
+          },
+          "header": [
+            {
+              "key": "Content-Type",
+              "value": "application/json",
+              "system": true
+            },
+            {
+              "key": "x-api-key",
+              "value": "{{apiKey}}",
+              "system": true
+            },
+            {
+              "key": "User-Agent",
+              "value": "PostmanRuntime/7.39.1",
+              "system": true
+            },
+            {
+              "key": "Accept",
+              "value": "*/*",
+              "system": true
+            },
+            {
+              "key": "Cache-Control",
+              "value": "no-cache",
+              "system": true
+            },
+            {
+              "key": "Postman-Token",
+              "value": "4760dc84-e6fc-4202-a808-053e91d98990",
+              "system": true
+            },
+            {
+              "key": "Host",
+              "value": "{{baseurl}}",
+              "system": true
+            },
+            {
+              "key": "Accept-Encoding",
+              "value": "gzip, deflate, br",
+              "system": true
+            },
+            {
+              "key": "Connection",
+              "value": "keep-alive",
+              "system": true
+            }
+          ],
+          "method": "POST",
+          "body": {
+            "mode": "raw",
+            "raw": "{\r\n  \"email\": \"eve.holt@reqres.in\",\r\n  \"password\": \"tester1234\"\r\n}\r\n",
+            "options": {
+              "raw": {
+                "language": "json"
+              }
+            }
+          }
+        },
+        "id": "fb860729-eef0-42b6-b173-b6b82778aeda",
+        "requestError": {
+          "errno": -3008,
+          "code": "ENOTFOUND",
+          "syscall": "getaddrinfo",
+          "hostname": "{{baseurl}}"
+        },
+        "assertions": [
+          {
+            "assertion": "Status code is expected",
+            "skipped": false,
+            "error": {
+              "name": "AssertionError",
+              "index": 0,
+              "test": "Status code is expected",
+              "message": "expected undefined to be one of [ 200, 201, 204, 400, 404 ]",
+              "stack": "AssertionError: expected undefined to be one of [ 200, 201, 204, 400, 404 ]\n   at Object.eval sandbox-script.js:1:3)"
+            }
+          },
+          {
+            "assertion": "Response is JSON when body exists",
+            "skipped": false
+          },
+          {
+            "assertion": "Auth success returns token",
+            "skipped": false,
+            "error": {
+              "name": "JSONError",
+              "index": 0,
+              "test": "Auth success returns token",
+              "message": "\"undefined\" is not valid JSON",
+              "stack": "JSONError: \"undefined\" is not valid JSON\n   at Object.eval sandbox-script.js:1:3)"
+            }
+          }
+        ]
+      },
+      {
+        "cursor": {
+          "ref": "1e352d5a-d9a3-4f74-a054-240880e01820",
+          "length": 4,
+          "cycles": 1,
+          "position": 3,
+          "iteration": 0,
+          "httpRequestId": "835dc8dd-7da5-48d8-81c4-6e15c77c3d15"
+        },
+        "item": {
+          "id": "dcd2467d-1c04-4455-bcd9-c928b6c90f13",
+          "name": "Login - Missing Password",
+          "request": {
+            "url": {
+              "path": [
+                "login"
+              ],
+              "host": [
+                "{{baseUrl}}"
+              ],
+              "query": [],
+              "variable": []
+            },
+            "method": "POST",
+            "body": {
+              "mode": "raw",
+              "raw": "{\r\n  \"email\": \"eve.holt@reqres.in\"\r\n}\r\n",
+              "options": {
+                "raw": {
+                  "language": "json"
+                }
+              }
+            }
+          },
+          "response": [],
+          "event": [
+            {
+              "listen": "test",
+              "script": {
+                "id": "e26f6771-ebb7-4539-a6ee-ac53810ad1b6",
+                "type": "text/javascript",
+                "packages": {},
+                "exec": [
+                  "pm.test(\"Auth failure returns error message\", function () {\r",
+                  "  const json = pm.response.json();\r",
+                  "  pm.expect(json).to.have.property(\"error\");\r",
+                  "  pm.expect(json.error).to.be.a(\"string\").and.not.empty;\r",
+                  "});\r",
+                  ""
+                ],
+                "_lastExecutionId": "8018d8c6-2fb0-4163-9b7f-90e6d39f7e75"
+              }
+            }
+          ]
+        },
+        "request": {
+          "url": {
+            "protocol": "http",
+            "path": [
+              "login"
+            ],
+            "host": [
+              "{{baseurl}}"
+            ],
+            "query": [],
+            "variable": []
+          },
+          "header": [
+            {
+              "key": "Content-Type",
+              "value": "application/json",
+              "system": true
+            },
+            {
+              "key": "x-api-key",
+              "value": "{{apiKey}}",
+              "system": true
+            },
+            {
+              "key": "User-Agent",
+              "value": "PostmanRuntime/7.39.1",
+              "system": true
+            },
+            {
+              "key": "Accept",
+              "value": "*/*",
+              "system": true
+            },
+            {
+              "key": "Cache-Control",
+              "value": "no-cache",
+              "system": true
+            },
+            {
+              "key": "Postman-Token",
+              "value": "60044fc7-440d-437d-8b74-e524f012e90e",
+              "system": true
+            },
+            {
+              "key": "Host",
+              "value": "{{baseurl}}",
+              "system": true
+            },
+            {
+              "key": "Accept-Encoding",
+              "value": "gzip, deflate, br",
+              "system": true
+            },
+            {
+              "key": "Connection",
+              "value": "keep-alive",
+              "system": true
+            }
+          ],
+          "method": "POST",
+          "body": {
+            "mode": "raw",
+            "raw": "{\r\n  \"email\": \"eve.holt@reqres.in\"\r\n}\r\n",
+            "options": {
+              "raw": {
+                "language": "json"
+              }
+            }
+          }
+        },
+        "id": "dcd2467d-1c04-4455-bcd9-c928b6c90f13",
+        "requestError": {
+          "errno": -3008,
+          "code": "ENOTFOUND",
+          "syscall": "getaddrinfo",
+          "hostname": "{{baseurl}}"
+        },
+        "assertions": [
+          {
+            "assertion": "Status code is expected",
+            "skipped": false,
+            "error": {
+              "name": "AssertionError",
+              "index": 0,
+              "test": "Status code is expected",
+              "message": "expected undefined to be one of [ 200, 201, 204, 400, 404 ]",
+              "stack": "AssertionError: expected undefined to be one of [ 200, 201, 204, 400, 404 ]\n   at Object.eval sandbox-script.js:1:4)"
+            }
+          },
+          {
+            "assertion": "Response is JSON when body exists",
+            "skipped": false
+          },
+          {
+            "assertion": "Auth failure returns error message",
+            "skipped": false,
+            "error": {
+              "name": "JSONError",
+              "index": 0,
+              "test": "Auth failure returns error message",
+              "message": "\"undefined\" is not valid JSON",
+              "stack": "JSONError: \"undefined\" is not valid JSON\n   at Object.eval sandbox-script.js:1:4)"
+            }
+          }
+        ]
+      }
+    ],
+    "transfers": {
+      "responseTotal": 0
+    },
+    "failures": [
+      {
+        "error": {
+          "errno": -3008,
+          "code": "ENOTFOUND",
+          "syscall": "getaddrinfo",
+          "hostname": "{{baseurl}}",
+          "name": "Error",
+          "message": "getaddrinfo ENOTFOUND {{baseurl}}",
+          "stack": "Error: getaddrinfo ENOTFOUND {{baseurl}}\n    at GetAddrInfoReqWrap.onlookupall [as oncomplete] (node:dns:121:26)",
+          "checksum": "40411357de20efe8fb1b1482afbb4411",
+          "id": "a44dde48-44aa-4650-aa36-ca4adecc2376",
+          "timestamp": 1771541529508,
+          "stacktrace": [
+            {
+              "fileName": "node:dns",
+              "lineNumber": 121,
+              "functionName": "GetAddrInfoReqWrap.onlookupall [as oncomplete]",
+              "typeName": "GetAddrInfoReqWrap",
+              "methodName": "onlookupall [as oncomplete]",
+              "columnNumber": 26,
+              "native": false
+            }
+          ]
+        },
+        "at": "request",
+        "source": {
+          "id": "95e77fcf-8073-4be4-871f-ac0b6a9507e0",
+          "name": "Register - Success",
+          "request": {
+            "url": {
+              "protocol": "http",
+              "path": [
+                "register"
+              ],
+              "host": [
+                "{{baseurl}}"
+              ],
+              "query": [],
+              "variable": []
+            },
+            "header": [
+              {
+                "key": "Content-Type",
+                "value": "application/json",
+                "system": true
+              },
+              {
+                "key": "x-api-key",
+                "value": "{{apiKey}}",
+                "system": true
+              },
+              {
+                "key": "User-Agent",
+                "value": "PostmanRuntime/7.39.1",
+                "system": true
+              },
+              {
+                "key": "Accept",
+                "value": "*/*",
+                "system": true
+              },
+              {
+                "key": "Cache-Control",
+                "value": "no-cache",
+                "system": true
+              },
+              {
+                "key": "Postman-Token",
+                "value": "62c14240-bdb5-49cf-80c6-adad3e9d321e",
+                "system": true
+              },
+              {
+                "key": "Host",
+                "value": "{{baseurl}}",
+                "system": true
+              },
+              {
+                "key": "Accept-Encoding",
+                "value": "gzip, deflate, br",
+                "system": true
+              },
+              {
+                "key": "Connection",
+                "value": "keep-alive",
+                "system": true
+              }
+            ],
+            "method": "POST",
+            "body": {
+              "mode": "raw",
+              "raw": "{\r\n  \"email\": \"eve.holt@reqres.in\",\r\n  \"password\": \"tester1234\"\r\n}\r\n",
+              "options": {
+                "raw": {
+                  "language": "json"
+                }
+              }
+            }
+          },
+          "response": [],
+          "event": [
+            {
+              "listen": "test",
+              "script": {
+                "id": "d0f6d381-9e06-4be7-9d55-ce59e8c2b78a",
+                "type": "text/javascript",
+                "packages": {},
+                "exec": [
+                  "pm.test(\"Auth success returns token\", function () {\r",
+                  "  const json = pm.response.json();\r",
+                  "  pm.expect(json).to.have.property(\"token\");\r",
+                  "  pm.environment.set(\"token\", json.token);\r",
+                  "});\r",
+                  ""
+                ]
+              }
+            }
+          ]
+        },
+        "cursor": {
+          "position": 0,
+          "iteration": 0,
+          "length": 4,
+          "cycles": 1,
+          "empty": false,
+          "eof": false,
+          "bof": true,
+          "cr": false,
+          "ref": "ec199edf-5586-4649-ad6a-1a5d1dded74f",
+          "httpRequestId": "a4f14f86-9311-488b-a2a8-1e74febd8a7d"
+        }
+      },
+      {
+        "error": {
+          "name": "AssertionError",
+          "index": 0,
+          "test": "Status code is expected",
+          "message": "expected undefined to be one of [ 200, 201, 204, 400, 404 ]",
+          "stack": "AssertionError: expected undefined to be one of [ 200, 201, 204, 400, 404 ]\n   at Object.eval sandbox-script.js:1:1)",
+          "checksum": "28cbe999ab6fb5220ba651368c55417d",
+          "id": "186512ba-f048-4fa1-a264-e0757acc9cd0",
+          "timestamp": 1771541529515,
+          "stacktrace": [
+            {
+              "fileName": "sandbox-script.js",
+              "lineNumber": 1,
+              "functionName": "Object.eval",
+              "typeName": "Object",
+              "methodName": "eval",
+              "columnNumber": 1,
+              "native": false
+            }
+          ]
+        },
+        "at": "assertion:0 in test-script",
+        "source": {
+          "id": "95e77fcf-8073-4be4-871f-ac0b6a9507e0",
+          "name": "Register - Success",
+          "request": {
+            "url": {
+              "path": [
+                "register"
+              ],
+              "host": [
+                "{{baseUrl}}"
+              ],
+              "query": [],
+              "variable": []
+            },
+            "method": "POST",
+            "body": {
+              "mode": "raw",
+              "raw": "{\r\n  \"email\": \"eve.holt@reqres.in\",\r\n  \"password\": \"tester1234\"\r\n}\r\n",
+              "options": {
+                "raw": {
+                  "language": "json"
+                }
+              }
+            }
+          },
+          "response": [],
+          "event": [
+            {
+              "listen": "test",
+              "script": {
+                "id": "d0f6d381-9e06-4be7-9d55-ce59e8c2b78a",
+                "type": "text/javascript",
+                "packages": {},
+                "exec": [
+                  "pm.test(\"Auth success returns token\", function () {\r",
+                  "  const json = pm.response.json();\r",
+                  "  pm.expect(json).to.have.property(\"token\");\r",
+                  "  pm.environment.set(\"token\", json.token);\r",
+                  "});\r",
+                  ""
+                ],
+                "_lastExecutionId": "0e5e33b3-e090-418c-b016-586d66399085"
+              }
+            }
+          ]
+        },
+        "parent": {
+          "_": {
+            "postman_id": "0e946f47-7d7c-4103-8ac6-a0a7a9885d56",
+            "exporter_id": "51643770",
+            "collection_link": "https://go.postman.co/collection/51643770-0e946f47-7d7c-4103-8ac6-a0a7a9885d56?source=collection_link"
+          },
+          "item": [
+            {
+              "id": "95e77fcf-8073-4be4-871f-ac0b6a9507e0",
+              "name": "Register - Success",
+              "request": {
+                "url": {
+                  "path": [
+                    "register"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [],
+                  "variable": []
+                },
+                "method": "POST",
+                "body": {
+                  "mode": "raw",
+                  "raw": "{\r\n  \"email\": \"eve.holt@reqres.in\",\r\n  \"password\": \"tester1234\"\r\n}\r\n",
+                  "options": {
+                    "raw": {
+                      "language": "json"
+                    }
+                  }
+                }
+              },
+              "response": [],
+              "event": [
+                {
+                  "listen": "test",
+                  "script": {
+                    "id": "d0f6d381-9e06-4be7-9d55-ce59e8c2b78a",
+                    "type": "text/javascript",
+                    "packages": {},
+                    "exec": [
+                      "pm.test(\"Auth success returns token\", function () {\r",
+                      "  const json = pm.response.json();\r",
+                      "  pm.expect(json).to.have.property(\"token\");\r",
+                      "  pm.environment.set(\"token\", json.token);\r",
+                      "});\r",
+                      ""
+                    ],
+                    "_lastExecutionId": "0e5e33b3-e090-418c-b016-586d66399085"
+                  }
+                }
+              ]
+            },
+            {
+              "id": "7543ce31-5b43-4d06-bf9d-4f793790c28c",
+              "name": "Register - Missing Password",
+              "request": {
+                "url": {
+                  "path": [
+                    "register"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [],
+                  "variable": []
+                },
+                "method": "POST"
+              },
+              "response": [],
+              "event": [
+                {
+                  "listen": "test",
+                  "script": {
+                    "id": "d6340a4e-1ba4-402b-a347-5e83fe21e14f",
+                    "type": "text/javascript",
+                    "packages": {},
+                    "exec": [
+                      "pm.test(\"Auth failure returns error message\", function () {\r",
+                      "  const json = pm.response.json();\r",
+                      "  pm.expect(json).to.have.property(\"error\");\r",
+                      "  pm.expect(json.error).to.be.a(\"string\").and.not.empty;\r",
+                      "});\r",
+                      ""
+                    ],
+                    "_lastExecutionId": "bc735681-510f-4213-83a4-4d88322d05a4"
+                  }
+                }
+              ]
+            },
+            {
+              "id": "fb860729-eef0-42b6-b173-b6b82778aeda",
+              "name": "Login - Success",
+              "request": {
+                "url": {
+                  "path": [
+                    "login"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [],
+                  "variable": []
+                },
+                "method": "POST",
+                "body": {
+                  "mode": "raw",
+                  "raw": "{\r\n  \"email\": \"eve.holt@reqres.in\",\r\n  \"password\": \"tester1234\"\r\n}\r\n",
+                  "options": {
+                    "raw": {
+                      "language": "json"
+                    }
+                  }
+                }
+              },
+              "response": [],
+              "event": [
+                {
+                  "listen": "test",
+                  "script": {
+                    "id": "2ddfc9f9-04b2-4752-aec1-5fb7e6008c0c",
+                    "type": "text/javascript",
+                    "packages": {},
+                    "exec": [
+                      "pm.test(\"Auth success returns token\", function () {\r",
+                      "  const json = pm.response.json();\r",
+                      "  pm.expect(json).to.have.property(\"token\");\r",
+                      "  pm.environment.set(\"token\", json.token);\r",
+                      "});\r",
+                      ""
+                    ],
+                    "_lastExecutionId": "71d4397d-20a3-4a3a-be1e-d41498a93d91"
+                  }
+                }
+              ]
+            },
+            {
+              "id": "dcd2467d-1c04-4455-bcd9-c928b6c90f13",
+              "name": "Login - Missing Password",
+              "request": {
+                "url": {
+                  "path": [
+                    "login"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [],
+                  "variable": []
+                },
+                "method": "POST",
+                "body": {
+                  "mode": "raw",
+                  "raw": "{\r\n  \"email\": \"eve.holt@reqres.in\"\r\n}\r\n",
+                  "options": {
+                    "raw": {
+                      "language": "json"
+                    }
+                  }
+                }
+              },
+              "response": [],
+              "event": [
+                {
+                  "listen": "test",
+                  "script": {
+                    "id": "e26f6771-ebb7-4539-a6ee-ac53810ad1b6",
+                    "type": "text/javascript",
+                    "packages": {},
+                    "exec": [
+                      "pm.test(\"Auth failure returns error message\", function () {\r",
+                      "  const json = pm.response.json();\r",
+                      "  pm.expect(json).to.have.property(\"error\");\r",
+                      "  pm.expect(json.error).to.be.a(\"string\").and.not.empty;\r",
+                      "});\r",
+                      ""
+                    ],
+                    "_lastExecutionId": "8018d8c6-2fb0-4163-9b7f-90e6d39f7e75"
+                  }
+                }
+              ]
+            }
+          ],
+          "auth": {
+            "type": "apikey",
+            "apikey": [
+              {
+                "type": "string",
+                "value": "x-api-key",
+                "key": "key"
+              },
+              {
+                "type": "string",
+                "value": "{{apiKey}}",
+                "key": "value"
+              }
+            ]
+          },
+          "event": [
+            {
+              "listen": "prerequest",
+              "script": {
+                "id": "ee82ac11-c721-49f1-9879-a544e6b758e4",
+                "type": "text/javascript",
+                "packages": {},
+                "exec": [
+                  ""
+                ],
+                "_lastExecutionId": "1445946b-9d00-4d08-b3be-01fadb357c5f"
+              }
+            },
+            {
+              "listen": "test",
+              "script": {
+                "id": "5445a0ab-6c81-4252-bde9-e8fe9b8e6cec",
+                "type": "text/javascript",
+                "packages": {},
+                "exec": [
+                  "pm.test(\"Status code is expected\", function () {\r",
+                  "  pm.expect(pm.response.code).to.be.oneOf([200, 201, 204, 400, 404]);\r",
+                  "});\r",
+                  "\r",
+                  "pm.test(\"Response is JSON when body exists\", function () {\r",
+                  "  if (pm.response.text()) {\r",
+                  "    pm.response.to.be.json;\r",
+                  "  }\r",
+                  "});\r",
+                  ""
+                ],
+                "_lastExecutionId": "da7a5f57-6c77-4f8c-81eb-8e75a54e11e1"
+              }
+            }
+          ],
+          "variable": [],
+          "info": {
+            "_postman_id": "0e946f47-7d7c-4103-8ac6-a0a7a9885d56",
+            "name": "Auth FLows",
+            "schema": "https://schema.getpostman.com/json/collection/v2.1.0/collection.json"
+          }
+        },
+        "cursor": {
+          "position": 0,
+          "iteration": 0,
+          "length": 4,
+          "cycles": 1,
+          "empty": false,
+          "eof": false,
+          "bof": true,
+          "cr": false,
+          "ref": "ec199edf-5586-4649-ad6a-1a5d1dded74f",
+          "httpRequestId": "a4f14f86-9311-488b-a2a8-1e74febd8a7d",
+          "scriptId": "5445a0ab-6c81-4252-bde9-e8fe9b8e6cec",
+          "execution": "d836ac88-9074-42fc-8869-54132d661e8f"
+        }
+      },
+      {
+        "error": {
+          "name": "JSONError",
+          "index": 0,
+          "test": "Auth success returns token",
+          "message": "\"undefined\" is not valid JSON",
+          "stack": "JSONError: \"undefined\" is not valid JSON\n   at Object.eval sandbox-script.js:1:1)",
+          "checksum": "e0f2ce28913aaf3815a493069e4d1f4c",
+          "id": "c1d1b671-f764-41c3-a73e-87432b1ffa4e",
+          "timestamp": 1771541529518,
+          "stacktrace": [
+            {
+              "fileName": "sandbox-script.js",
+              "lineNumber": 1,
+              "functionName": "Object.eval",
+              "typeName": "Object",
+              "methodName": "eval",
+              "columnNumber": 1,
+              "native": false
+            }
+          ]
+        },
+        "at": "assertion:0 in test-script",
+        "source": {
+          "id": "95e77fcf-8073-4be4-871f-ac0b6a9507e0",
+          "name": "Register - Success",
+          "request": {
+            "url": {
+              "path": [
+                "register"
+              ],
+              "host": [
+                "{{baseUrl}}"
+              ],
+              "query": [],
+              "variable": []
+            },
+            "method": "POST",
+            "body": {
+              "mode": "raw",
+              "raw": "{\r\n  \"email\": \"eve.holt@reqres.in\",\r\n  \"password\": \"tester1234\"\r\n}\r\n",
+              "options": {
+                "raw": {
+                  "language": "json"
+                }
+              }
+            }
+          },
+          "response": [],
+          "event": [
+            {
+              "listen": "test",
+              "script": {
+                "id": "d0f6d381-9e06-4be7-9d55-ce59e8c2b78a",
+                "type": "text/javascript",
+                "packages": {},
+                "exec": [
+                  "pm.test(\"Auth success returns token\", function () {\r",
+                  "  const json = pm.response.json();\r",
+                  "  pm.expect(json).to.have.property(\"token\");\r",
+                  "  pm.environment.set(\"token\", json.token);\r",
+                  "});\r",
+                  ""
+                ],
+                "_lastExecutionId": "0e5e33b3-e090-418c-b016-586d66399085"
+              }
+            }
+          ]
+        },
+        "parent": {
+          "_": {
+            "postman_id": "0e946f47-7d7c-4103-8ac6-a0a7a9885d56",
+            "exporter_id": "51643770",
+            "collection_link": "https://go.postman.co/collection/51643770-0e946f47-7d7c-4103-8ac6-a0a7a9885d56?source=collection_link"
+          },
+          "item": [
+            {
+              "id": "95e77fcf-8073-4be4-871f-ac0b6a9507e0",
+              "name": "Register - Success",
+              "request": {
+                "url": {
+                  "path": [
+                    "register"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [],
+                  "variable": []
+                },
+                "method": "POST",
+                "body": {
+                  "mode": "raw",
+                  "raw": "{\r\n  \"email\": \"eve.holt@reqres.in\",\r\n  \"password\": \"tester1234\"\r\n}\r\n",
+                  "options": {
+                    "raw": {
+                      "language": "json"
+                    }
+                  }
+                }
+              },
+              "response": [],
+              "event": [
+                {
+                  "listen": "test",
+                  "script": {
+                    "id": "d0f6d381-9e06-4be7-9d55-ce59e8c2b78a",
+                    "type": "text/javascript",
+                    "packages": {},
+                    "exec": [
+                      "pm.test(\"Auth success returns token\", function () {\r",
+                      "  const json = pm.response.json();\r",
+                      "  pm.expect(json).to.have.property(\"token\");\r",
+                      "  pm.environment.set(\"token\", json.token);\r",
+                      "});\r",
+                      ""
+                    ],
+                    "_lastExecutionId": "0e5e33b3-e090-418c-b016-586d66399085"
+                  }
+                }
+              ]
+            },
+            {
+              "id": "7543ce31-5b43-4d06-bf9d-4f793790c28c",
+              "name": "Register - Missing Password",
+              "request": {
+                "url": {
+                  "path": [
+                    "register"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [],
+                  "variable": []
+                },
+                "method": "POST"
+              },
+              "response": [],
+              "event": [
+                {
+                  "listen": "test",
+                  "script": {
+                    "id": "d6340a4e-1ba4-402b-a347-5e83fe21e14f",
+                    "type": "text/javascript",
+                    "packages": {},
+                    "exec": [
+                      "pm.test(\"Auth failure returns error message\", function () {\r",
+                      "  const json = pm.response.json();\r",
+                      "  pm.expect(json).to.have.property(\"error\");\r",
+                      "  pm.expect(json.error).to.be.a(\"string\").and.not.empty;\r",
+                      "});\r",
+                      ""
+                    ],
+                    "_lastExecutionId": "bc735681-510f-4213-83a4-4d88322d05a4"
+                  }
+                }
+              ]
+            },
+            {
+              "id": "fb860729-eef0-42b6-b173-b6b82778aeda",
+              "name": "Login - Success",
+              "request": {
+                "url": {
+                  "path": [
+                    "login"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [],
+                  "variable": []
+                },
+                "method": "POST",
+                "body": {
+                  "mode": "raw",
+                  "raw": "{\r\n  \"email\": \"eve.holt@reqres.in\",\r\n  \"password\": \"tester1234\"\r\n}\r\n",
+                  "options": {
+                    "raw": {
+                      "language": "json"
+                    }
+                  }
+                }
+              },
+              "response": [],
+              "event": [
+                {
+                  "listen": "test",
+                  "script": {
+                    "id": "2ddfc9f9-04b2-4752-aec1-5fb7e6008c0c",
+                    "type": "text/javascript",
+                    "packages": {},
+                    "exec": [
+                      "pm.test(\"Auth success returns token\", function () {\r",
+                      "  const json = pm.response.json();\r",
+                      "  pm.expect(json).to.have.property(\"token\");\r",
+                      "  pm.environment.set(\"token\", json.token);\r",
+                      "});\r",
+                      ""
+                    ],
+                    "_lastExecutionId": "71d4397d-20a3-4a3a-be1e-d41498a93d91"
+                  }
+                }
+              ]
+            },
+            {
+              "id": "dcd2467d-1c04-4455-bcd9-c928b6c90f13",
+              "name": "Login - Missing Password",
+              "request": {
+                "url": {
+                  "path": [
+                    "login"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [],
+                  "variable": []
+                },
+                "method": "POST",
+                "body": {
+                  "mode": "raw",
+                  "raw": "{\r\n  \"email\": \"eve.holt@reqres.in\"\r\n}\r\n",
+                  "options": {
+                    "raw": {
+                      "language": "json"
+                    }
+                  }
+                }
+              },
+              "response": [],
+              "event": [
+                {
+                  "listen": "test",
+                  "script": {
+                    "id": "e26f6771-ebb7-4539-a6ee-ac53810ad1b6",
+                    "type": "text/javascript",
+                    "packages": {},
+                    "exec": [
+                      "pm.test(\"Auth failure returns error message\", function () {\r",
+                      "  const json = pm.response.json();\r",
+                      "  pm.expect(json).to.have.property(\"error\");\r",
+                      "  pm.expect(json.error).to.be.a(\"string\").and.not.empty;\r",
+                      "});\r",
+                      ""
+                    ],
+                    "_lastExecutionId": "8018d8c6-2fb0-4163-9b7f-90e6d39f7e75"
+                  }
+                }
+              ]
+            }
+          ],
+          "auth": {
+            "type": "apikey",
+            "apikey": [
+              {
+                "type": "string",
+                "value": "x-api-key",
+                "key": "key"
+              },
+              {
+                "type": "string",
+                "value": "{{apiKey}}",
+                "key": "value"
+              }
+            ]
+          },
+          "event": [
+            {
+              "listen": "prerequest",
+              "script": {
+                "id": "ee82ac11-c721-49f1-9879-a544e6b758e4",
+                "type": "text/javascript",
+                "packages": {},
+                "exec": [
+                  ""
+                ],
+                "_lastExecutionId": "1445946b-9d00-4d08-b3be-01fadb357c5f"
+              }
+            },
+            {
+              "listen": "test",
+              "script": {
+                "id": "5445a0ab-6c81-4252-bde9-e8fe9b8e6cec",
+                "type": "text/javascript",
+                "packages": {},
+                "exec": [
+                  "pm.test(\"Status code is expected\", function () {\r",
+                  "  pm.expect(pm.response.code).to.be.oneOf([200, 201, 204, 400, 404]);\r",
+                  "});\r",
+                  "\r",
+                  "pm.test(\"Response is JSON when body exists\", function () {\r",
+                  "  if (pm.response.text()) {\r",
+                  "    pm.response.to.be.json;\r",
+                  "  }\r",
+                  "});\r",
+                  ""
+                ],
+                "_lastExecutionId": "da7a5f57-6c77-4f8c-81eb-8e75a54e11e1"
+              }
+            }
+          ],
+          "variable": [],
+          "info": {
+            "_postman_id": "0e946f47-7d7c-4103-8ac6-a0a7a9885d56",
+            "name": "Auth FLows",
+            "schema": "https://schema.getpostman.com/json/collection/v2.1.0/collection.json"
+          }
+        },
+        "cursor": {
+          "position": 0,
+          "iteration": 0,
+          "length": 4,
+          "cycles": 1,
+          "empty": false,
+          "eof": false,
+          "bof": true,
+          "cr": false,
+          "ref": "ec199edf-5586-4649-ad6a-1a5d1dded74f",
+          "httpRequestId": "a4f14f86-9311-488b-a2a8-1e74febd8a7d",
+          "scriptId": "d0f6d381-9e06-4be7-9d55-ce59e8c2b78a",
+          "execution": "0e5e33b3-e090-418c-b016-586d66399085"
+        }
+      },
+      {
+        "error": {
+          "errno": -3008,
+          "code": "ENOTFOUND",
+          "syscall": "getaddrinfo",
+          "hostname": "{{baseurl}}",
+          "name": "Error",
+          "message": "getaddrinfo ENOTFOUND {{baseurl}}",
+          "stack": "Error: getaddrinfo ENOTFOUND {{baseurl}}\n    at GetAddrInfoReqWrap.onlookupall [as oncomplete] (node:dns:121:26)",
+          "checksum": "40411357de20efe8fb1b1482afbb4411",
+          "id": "be3d9061-39d4-49b4-bc7a-b4faf3c80e7e",
+          "timestamp": 1771541529574,
+          "stacktrace": [
+            {
+              "fileName": "node:dns",
+              "lineNumber": 121,
+              "functionName": "GetAddrInfoReqWrap.onlookupall [as oncomplete]",
+              "typeName": "GetAddrInfoReqWrap",
+              "methodName": "onlookupall [as oncomplete]",
+              "columnNumber": 26,
+              "native": false
+            }
+          ]
+        },
+        "at": "request",
+        "source": {
+          "id": "7543ce31-5b43-4d06-bf9d-4f793790c28c",
+          "name": "Register - Missing Password",
+          "request": {
+            "url": {
+              "protocol": "http",
+              "path": [
+                "register"
+              ],
+              "host": [
+                "{{baseurl}}"
+              ],
+              "query": [],
+              "variable": []
+            },
+            "header": [
+              {
+                "key": "x-api-key",
+                "value": "{{apiKey}}",
+                "system": true
+              },
+              {
+                "key": "User-Agent",
+                "value": "PostmanRuntime/7.39.1",
+                "system": true
+              },
+              {
+                "key": "Accept",
+                "value": "*/*",
+                "system": true
+              },
+              {
+                "key": "Cache-Control",
+                "value": "no-cache",
+                "system": true
+              },
+              {
+                "key": "Postman-Token",
+                "value": "4898e933-ce48-4b0b-8491-9ab077e6b20d",
+                "system": true
+              },
+              {
+                "key": "Host",
+                "value": "{{baseurl}}",
+                "system": true
+              },
+              {
+                "key": "Accept-Encoding",
+                "value": "gzip, deflate, br",
+                "system": true
+              },
+              {
+                "key": "Connection",
+                "value": "keep-alive",
+                "system": true
+              }
+            ],
+            "method": "POST"
+          },
+          "response": [],
+          "event": [
+            {
+              "listen": "test",
+              "script": {
+                "id": "d6340a4e-1ba4-402b-a347-5e83fe21e14f",
+                "type": "text/javascript",
+                "packages": {},
+                "exec": [
+                  "pm.test(\"Auth failure returns error message\", function () {\r",
+                  "  const json = pm.response.json();\r",
+                  "  pm.expect(json).to.have.property(\"error\");\r",
+                  "  pm.expect(json.error).to.be.a(\"string\").and.not.empty;\r",
+                  "});\r",
+                  ""
+                ]
+              }
+            }
+          ]
+        },
+        "cursor": {
+          "ref": "94d10583-c2de-4c20-ae48-c46552d63503",
+          "length": 4,
+          "cycles": 1,
+          "position": 1,
+          "iteration": 0,
+          "httpRequestId": "94575360-dffa-4a92-b27e-c9c2e62d1c0d"
+        }
+      },
+      {
+        "error": {
+          "name": "AssertionError",
+          "index": 0,
+          "test": "Status code is expected",
+          "message": "expected undefined to be one of [ 200, 201, 204, 400, 404 ]",
+          "stack": "AssertionError: expected undefined to be one of [ 200, 201, 204, 400, 404 ]\n   at Object.eval sandbox-script.js:1:2)",
+          "checksum": "06db1c5aa357714a690242eeca4b1c21",
+          "id": "e2ef2885-d3cc-427a-97d3-a16970accd8e",
+          "timestamp": 1771541529589,
+          "stacktrace": [
+            {
+              "fileName": "sandbox-script.js",
+              "lineNumber": 1,
+              "functionName": "Object.eval",
+              "typeName": "Object",
+              "methodName": "eval",
+              "columnNumber": 2,
+              "native": false
+            }
+          ]
+        },
+        "at": "assertion:0 in test-script",
+        "source": {
+          "id": "7543ce31-5b43-4d06-bf9d-4f793790c28c",
+          "name": "Register - Missing Password",
+          "request": {
+            "url": {
+              "path": [
+                "register"
+              ],
+              "host": [
+                "{{baseUrl}}"
+              ],
+              "query": [],
+              "variable": []
+            },
+            "method": "POST"
+          },
+          "response": [],
+          "event": [
+            {
+              "listen": "test",
+              "script": {
+                "id": "d6340a4e-1ba4-402b-a347-5e83fe21e14f",
+                "type": "text/javascript",
+                "packages": {},
+                "exec": [
+                  "pm.test(\"Auth failure returns error message\", function () {\r",
+                  "  const json = pm.response.json();\r",
+                  "  pm.expect(json).to.have.property(\"error\");\r",
+                  "  pm.expect(json.error).to.be.a(\"string\").and.not.empty;\r",
+                  "});\r",
+                  ""
+                ],
+                "_lastExecutionId": "bc735681-510f-4213-83a4-4d88322d05a4"
+              }
+            }
+          ]
+        },
+        "parent": {
+          "_": {
+            "postman_id": "0e946f47-7d7c-4103-8ac6-a0a7a9885d56",
+            "exporter_id": "51643770",
+            "collection_link": "https://go.postman.co/collection/51643770-0e946f47-7d7c-4103-8ac6-a0a7a9885d56?source=collection_link"
+          },
+          "item": [
+            {
+              "id": "95e77fcf-8073-4be4-871f-ac0b6a9507e0",
+              "name": "Register - Success",
+              "request": {
+                "url": {
+                  "path": [
+                    "register"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [],
+                  "variable": []
+                },
+                "method": "POST",
+                "body": {
+                  "mode": "raw",
+                  "raw": "{\r\n  \"email\": \"eve.holt@reqres.in\",\r\n  \"password\": \"tester1234\"\r\n}\r\n",
+                  "options": {
+                    "raw": {
+                      "language": "json"
+                    }
+                  }
+                }
+              },
+              "response": [],
+              "event": [
+                {
+                  "listen": "test",
+                  "script": {
+                    "id": "d0f6d381-9e06-4be7-9d55-ce59e8c2b78a",
+                    "type": "text/javascript",
+                    "packages": {},
+                    "exec": [
+                      "pm.test(\"Auth success returns token\", function () {\r",
+                      "  const json = pm.response.json();\r",
+                      "  pm.expect(json).to.have.property(\"token\");\r",
+                      "  pm.environment.set(\"token\", json.token);\r",
+                      "});\r",
+                      ""
+                    ],
+                    "_lastExecutionId": "0e5e33b3-e090-418c-b016-586d66399085"
+                  }
+                }
+              ]
+            },
+            {
+              "id": "7543ce31-5b43-4d06-bf9d-4f793790c28c",
+              "name": "Register - Missing Password",
+              "request": {
+                "url": {
+                  "path": [
+                    "register"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [],
+                  "variable": []
+                },
+                "method": "POST"
+              },
+              "response": [],
+              "event": [
+                {
+                  "listen": "test",
+                  "script": {
+                    "id": "d6340a4e-1ba4-402b-a347-5e83fe21e14f",
+                    "type": "text/javascript",
+                    "packages": {},
+                    "exec": [
+                      "pm.test(\"Auth failure returns error message\", function () {\r",
+                      "  const json = pm.response.json();\r",
+                      "  pm.expect(json).to.have.property(\"error\");\r",
+                      "  pm.expect(json.error).to.be.a(\"string\").and.not.empty;\r",
+                      "});\r",
+                      ""
+                    ],
+                    "_lastExecutionId": "bc735681-510f-4213-83a4-4d88322d05a4"
+                  }
+                }
+              ]
+            },
+            {
+              "id": "fb860729-eef0-42b6-b173-b6b82778aeda",
+              "name": "Login - Success",
+              "request": {
+                "url": {
+                  "path": [
+                    "login"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [],
+                  "variable": []
+                },
+                "method": "POST",
+                "body": {
+                  "mode": "raw",
+                  "raw": "{\r\n  \"email\": \"eve.holt@reqres.in\",\r\n  \"password\": \"tester1234\"\r\n}\r\n",
+                  "options": {
+                    "raw": {
+                      "language": "json"
+                    }
+                  }
+                }
+              },
+              "response": [],
+              "event": [
+                {
+                  "listen": "test",
+                  "script": {
+                    "id": "2ddfc9f9-04b2-4752-aec1-5fb7e6008c0c",
+                    "type": "text/javascript",
+                    "packages": {},
+                    "exec": [
+                      "pm.test(\"Auth success returns token\", function () {\r",
+                      "  const json = pm.response.json();\r",
+                      "  pm.expect(json).to.have.property(\"token\");\r",
+                      "  pm.environment.set(\"token\", json.token);\r",
+                      "});\r",
+                      ""
+                    ],
+                    "_lastExecutionId": "71d4397d-20a3-4a3a-be1e-d41498a93d91"
+                  }
+                }
+              ]
+            },
+            {
+              "id": "dcd2467d-1c04-4455-bcd9-c928b6c90f13",
+              "name": "Login - Missing Password",
+              "request": {
+                "url": {
+                  "path": [
+                    "login"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [],
+                  "variable": []
+                },
+                "method": "POST",
+                "body": {
+                  "mode": "raw",
+                  "raw": "{\r\n  \"email\": \"eve.holt@reqres.in\"\r\n}\r\n",
+                  "options": {
+                    "raw": {
+                      "language": "json"
+                    }
+                  }
+                }
+              },
+              "response": [],
+              "event": [
+                {
+                  "listen": "test",
+                  "script": {
+                    "id": "e26f6771-ebb7-4539-a6ee-ac53810ad1b6",
+                    "type": "text/javascript",
+                    "packages": {},
+                    "exec": [
+                      "pm.test(\"Auth failure returns error message\", function () {\r",
+                      "  const json = pm.response.json();\r",
+                      "  pm.expect(json).to.have.property(\"error\");\r",
+                      "  pm.expect(json.error).to.be.a(\"string\").and.not.empty;\r",
+                      "});\r",
+                      ""
+                    ],
+                    "_lastExecutionId": "8018d8c6-2fb0-4163-9b7f-90e6d39f7e75"
+                  }
+                }
+              ]
+            }
+          ],
+          "auth": {
+            "type": "apikey",
+            "apikey": [
+              {
+                "type": "string",
+                "value": "x-api-key",
+                "key": "key"
+              },
+              {
+                "type": "string",
+                "value": "{{apiKey}}",
+                "key": "value"
+              }
+            ]
+          },
+          "event": [
+            {
+              "listen": "prerequest",
+              "script": {
+                "id": "ee82ac11-c721-49f1-9879-a544e6b758e4",
+                "type": "text/javascript",
+                "packages": {},
+                "exec": [
+                  ""
+                ],
+                "_lastExecutionId": "1445946b-9d00-4d08-b3be-01fadb357c5f"
+              }
+            },
+            {
+              "listen": "test",
+              "script": {
+                "id": "5445a0ab-6c81-4252-bde9-e8fe9b8e6cec",
+                "type": "text/javascript",
+                "packages": {},
+                "exec": [
+                  "pm.test(\"Status code is expected\", function () {\r",
+                  "  pm.expect(pm.response.code).to.be.oneOf([200, 201, 204, 400, 404]);\r",
+                  "});\r",
+                  "\r",
+                  "pm.test(\"Response is JSON when body exists\", function () {\r",
+                  "  if (pm.response.text()) {\r",
+                  "    pm.response.to.be.json;\r",
+                  "  }\r",
+                  "});\r",
+                  ""
+                ],
+                "_lastExecutionId": "da7a5f57-6c77-4f8c-81eb-8e75a54e11e1"
+              }
+            }
+          ],
+          "variable": [],
+          "info": {
+            "_postman_id": "0e946f47-7d7c-4103-8ac6-a0a7a9885d56",
+            "name": "Auth FLows",
+            "schema": "https://schema.getpostman.com/json/collection/v2.1.0/collection.json"
+          }
+        },
+        "cursor": {
+          "ref": "94d10583-c2de-4c20-ae48-c46552d63503",
+          "length": 4,
+          "cycles": 1,
+          "position": 1,
+          "iteration": 0,
+          "httpRequestId": "94575360-dffa-4a92-b27e-c9c2e62d1c0d",
+          "scriptId": "5445a0ab-6c81-4252-bde9-e8fe9b8e6cec",
+          "execution": "32fe7ccb-833b-488d-8a14-21e397527ca0"
+        }
+      },
+      {
+        "error": {
+          "name": "JSONError",
+          "index": 0,
+          "test": "Auth failure returns error message",
+          "message": "\"undefined\" is not valid JSON",
+          "stack": "JSONError: \"undefined\" is not valid JSON\n   at Object.eval sandbox-script.js:1:2)",
+          "checksum": "ebd530df8d6811197ce04d77a0916915",
+          "id": "7857f256-aa78-4a8e-869b-6494c968b9f6",
+          "timestamp": 1771541529591,
+          "stacktrace": [
+            {
+              "fileName": "sandbox-script.js",
+              "lineNumber": 1,
+              "functionName": "Object.eval",
+              "typeName": "Object",
+              "methodName": "eval",
+              "columnNumber": 2,
+              "native": false
+            }
+          ]
+        },
+        "at": "assertion:0 in test-script",
+        "source": {
+          "id": "7543ce31-5b43-4d06-bf9d-4f793790c28c",
+          "name": "Register - Missing Password",
+          "request": {
+            "url": {
+              "path": [
+                "register"
+              ],
+              "host": [
+                "{{baseUrl}}"
+              ],
+              "query": [],
+              "variable": []
+            },
+            "method": "POST"
+          },
+          "response": [],
+          "event": [
+            {
+              "listen": "test",
+              "script": {
+                "id": "d6340a4e-1ba4-402b-a347-5e83fe21e14f",
+                "type": "text/javascript",
+                "packages": {},
+                "exec": [
+                  "pm.test(\"Auth failure returns error message\", function () {\r",
+                  "  const json = pm.response.json();\r",
+                  "  pm.expect(json).to.have.property(\"error\");\r",
+                  "  pm.expect(json.error).to.be.a(\"string\").and.not.empty;\r",
+                  "});\r",
+                  ""
+                ],
+                "_lastExecutionId": "bc735681-510f-4213-83a4-4d88322d05a4"
+              }
+            }
+          ]
+        },
+        "parent": {
+          "_": {
+            "postman_id": "0e946f47-7d7c-4103-8ac6-a0a7a9885d56",
+            "exporter_id": "51643770",
+            "collection_link": "https://go.postman.co/collection/51643770-0e946f47-7d7c-4103-8ac6-a0a7a9885d56?source=collection_link"
+          },
+          "item": [
+            {
+              "id": "95e77fcf-8073-4be4-871f-ac0b6a9507e0",
+              "name": "Register - Success",
+              "request": {
+                "url": {
+                  "path": [
+                    "register"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [],
+                  "variable": []
+                },
+                "method": "POST",
+                "body": {
+                  "mode": "raw",
+                  "raw": "{\r\n  \"email\": \"eve.holt@reqres.in\",\r\n  \"password\": \"tester1234\"\r\n}\r\n",
+                  "options": {
+                    "raw": {
+                      "language": "json"
+                    }
+                  }
+                }
+              },
+              "response": [],
+              "event": [
+                {
+                  "listen": "test",
+                  "script": {
+                    "id": "d0f6d381-9e06-4be7-9d55-ce59e8c2b78a",
+                    "type": "text/javascript",
+                    "packages": {},
+                    "exec": [
+                      "pm.test(\"Auth success returns token\", function () {\r",
+                      "  const json = pm.response.json();\r",
+                      "  pm.expect(json).to.have.property(\"token\");\r",
+                      "  pm.environment.set(\"token\", json.token);\r",
+                      "});\r",
+                      ""
+                    ],
+                    "_lastExecutionId": "0e5e33b3-e090-418c-b016-586d66399085"
+                  }
+                }
+              ]
+            },
+            {
+              "id": "7543ce31-5b43-4d06-bf9d-4f793790c28c",
+              "name": "Register - Missing Password",
+              "request": {
+                "url": {
+                  "path": [
+                    "register"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [],
+                  "variable": []
+                },
+                "method": "POST"
+              },
+              "response": [],
+              "event": [
+                {
+                  "listen": "test",
+                  "script": {
+                    "id": "d6340a4e-1ba4-402b-a347-5e83fe21e14f",
+                    "type": "text/javascript",
+                    "packages": {},
+                    "exec": [
+                      "pm.test(\"Auth failure returns error message\", function () {\r",
+                      "  const json = pm.response.json();\r",
+                      "  pm.expect(json).to.have.property(\"error\");\r",
+                      "  pm.expect(json.error).to.be.a(\"string\").and.not.empty;\r",
+                      "});\r",
+                      ""
+                    ],
+                    "_lastExecutionId": "bc735681-510f-4213-83a4-4d88322d05a4"
+                  }
+                }
+              ]
+            },
+            {
+              "id": "fb860729-eef0-42b6-b173-b6b82778aeda",
+              "name": "Login - Success",
+              "request": {
+                "url": {
+                  "path": [
+                    "login"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [],
+                  "variable": []
+                },
+                "method": "POST",
+                "body": {
+                  "mode": "raw",
+                  "raw": "{\r\n  \"email\": \"eve.holt@reqres.in\",\r\n  \"password\": \"tester1234\"\r\n}\r\n",
+                  "options": {
+                    "raw": {
+                      "language": "json"
+                    }
+                  }
+                }
+              },
+              "response": [],
+              "event": [
+                {
+                  "listen": "test",
+                  "script": {
+                    "id": "2ddfc9f9-04b2-4752-aec1-5fb7e6008c0c",
+                    "type": "text/javascript",
+                    "packages": {},
+                    "exec": [
+                      "pm.test(\"Auth success returns token\", function () {\r",
+                      "  const json = pm.response.json();\r",
+                      "  pm.expect(json).to.have.property(\"token\");\r",
+                      "  pm.environment.set(\"token\", json.token);\r",
+                      "});\r",
+                      ""
+                    ],
+                    "_lastExecutionId": "71d4397d-20a3-4a3a-be1e-d41498a93d91"
+                  }
+                }
+              ]
+            },
+            {
+              "id": "dcd2467d-1c04-4455-bcd9-c928b6c90f13",
+              "name": "Login - Missing Password",
+              "request": {
+                "url": {
+                  "path": [
+                    "login"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [],
+                  "variable": []
+                },
+                "method": "POST",
+                "body": {
+                  "mode": "raw",
+                  "raw": "{\r\n  \"email\": \"eve.holt@reqres.in\"\r\n}\r\n",
+                  "options": {
+                    "raw": {
+                      "language": "json"
+                    }
+                  }
+                }
+              },
+              "response": [],
+              "event": [
+                {
+                  "listen": "test",
+                  "script": {
+                    "id": "e26f6771-ebb7-4539-a6ee-ac53810ad1b6",
+                    "type": "text/javascript",
+                    "packages": {},
+                    "exec": [
+                      "pm.test(\"Auth failure returns error message\", function () {\r",
+                      "  const json = pm.response.json();\r",
+                      "  pm.expect(json).to.have.property(\"error\");\r",
+                      "  pm.expect(json.error).to.be.a(\"string\").and.not.empty;\r",
+                      "});\r",
+                      ""
+                    ],
+                    "_lastExecutionId": "8018d8c6-2fb0-4163-9b7f-90e6d39f7e75"
+                  }
+                }
+              ]
+            }
+          ],
+          "auth": {
+            "type": "apikey",
+            "apikey": [
+              {
+                "type": "string",
+                "value": "x-api-key",
+                "key": "key"
+              },
+              {
+                "type": "string",
+                "value": "{{apiKey}}",
+                "key": "value"
+              }
+            ]
+          },
+          "event": [
+            {
+              "listen": "prerequest",
+              "script": {
+                "id": "ee82ac11-c721-49f1-9879-a544e6b758e4",
+                "type": "text/javascript",
+                "packages": {},
+                "exec": [
+                  ""
+                ],
+                "_lastExecutionId": "1445946b-9d00-4d08-b3be-01fadb357c5f"
+              }
+            },
+            {
+              "listen": "test",
+              "script": {
+                "id": "5445a0ab-6c81-4252-bde9-e8fe9b8e6cec",
+                "type": "text/javascript",
+                "packages": {},
+                "exec": [
+                  "pm.test(\"Status code is expected\", function () {\r",
+                  "  pm.expect(pm.response.code).to.be.oneOf([200, 201, 204, 400, 404]);\r",
+                  "});\r",
+                  "\r",
+                  "pm.test(\"Response is JSON when body exists\", function () {\r",
+                  "  if (pm.response.text()) {\r",
+                  "    pm.response.to.be.json;\r",
+                  "  }\r",
+                  "});\r",
+                  ""
+                ],
+                "_lastExecutionId": "da7a5f57-6c77-4f8c-81eb-8e75a54e11e1"
+              }
+            }
+          ],
+          "variable": [],
+          "info": {
+            "_postman_id": "0e946f47-7d7c-4103-8ac6-a0a7a9885d56",
+            "name": "Auth FLows",
+            "schema": "https://schema.getpostman.com/json/collection/v2.1.0/collection.json"
+          }
+        },
+        "cursor": {
+          "ref": "94d10583-c2de-4c20-ae48-c46552d63503",
+          "length": 4,
+          "cycles": 1,
+          "position": 1,
+          "iteration": 0,
+          "httpRequestId": "94575360-dffa-4a92-b27e-c9c2e62d1c0d",
+          "scriptId": "d6340a4e-1ba4-402b-a347-5e83fe21e14f",
+          "execution": "bc735681-510f-4213-83a4-4d88322d05a4"
+        }
+      },
+      {
+        "error": {
+          "errno": -3008,
+          "code": "ENOTFOUND",
+          "syscall": "getaddrinfo",
+          "hostname": "{{baseurl}}",
+          "name": "Error",
+          "message": "getaddrinfo ENOTFOUND {{baseurl}}",
+          "stack": "Error: getaddrinfo ENOTFOUND {{baseurl}}\n    at GetAddrInfoReqWrap.onlookupall [as oncomplete] (node:dns:121:26)",
+          "checksum": "40411357de20efe8fb1b1482afbb4411",
+          "id": "3d5a01b0-513e-44e3-b0ec-ebd3897da91f",
+          "timestamp": 1771541529666,
+          "stacktrace": [
+            {
+              "fileName": "node:dns",
+              "lineNumber": 121,
+              "functionName": "GetAddrInfoReqWrap.onlookupall [as oncomplete]",
+              "typeName": "GetAddrInfoReqWrap",
+              "methodName": "onlookupall [as oncomplete]",
+              "columnNumber": 26,
+              "native": false
+            }
+          ]
+        },
+        "at": "request",
+        "source": {
+          "id": "fb860729-eef0-42b6-b173-b6b82778aeda",
+          "name": "Login - Success",
+          "request": {
+            "url": {
+              "protocol": "http",
+              "path": [
+                "login"
+              ],
+              "host": [
+                "{{baseurl}}"
+              ],
+              "query": [],
+              "variable": []
+            },
+            "header": [
+              {
+                "key": "Content-Type",
+                "value": "application/json",
+                "system": true
+              },
+              {
+                "key": "x-api-key",
+                "value": "{{apiKey}}",
+                "system": true
+              },
+              {
+                "key": "User-Agent",
+                "value": "PostmanRuntime/7.39.1",
+                "system": true
+              },
+              {
+                "key": "Accept",
+                "value": "*/*",
+                "system": true
+              },
+              {
+                "key": "Cache-Control",
+                "value": "no-cache",
+                "system": true
+              },
+              {
+                "key": "Postman-Token",
+                "value": "4760dc84-e6fc-4202-a808-053e91d98990",
+                "system": true
+              },
+              {
+                "key": "Host",
+                "value": "{{baseurl}}",
+                "system": true
+              },
+              {
+                "key": "Accept-Encoding",
+                "value": "gzip, deflate, br",
+                "system": true
+              },
+              {
+                "key": "Connection",
+                "value": "keep-alive",
+                "system": true
+              }
+            ],
+            "method": "POST",
+            "body": {
+              "mode": "raw",
+              "raw": "{\r\n  \"email\": \"eve.holt@reqres.in\",\r\n  \"password\": \"tester1234\"\r\n}\r\n",
+              "options": {
+                "raw": {
+                  "language": "json"
+                }
+              }
+            }
+          },
+          "response": [],
+          "event": [
+            {
+              "listen": "test",
+              "script": {
+                "id": "2ddfc9f9-04b2-4752-aec1-5fb7e6008c0c",
+                "type": "text/javascript",
+                "packages": {},
+                "exec": [
+                  "pm.test(\"Auth success returns token\", function () {\r",
+                  "  const json = pm.response.json();\r",
+                  "  pm.expect(json).to.have.property(\"token\");\r",
+                  "  pm.environment.set(\"token\", json.token);\r",
+                  "});\r",
+                  ""
+                ]
+              }
+            }
+          ]
+        },
+        "cursor": {
+          "ref": "4fe0687e-207a-4980-863e-e0ccf4e51f25",
+          "length": 4,
+          "cycles": 1,
+          "position": 2,
+          "iteration": 0,
+          "httpRequestId": "77ccd205-42f6-4855-828a-0935e5362b26"
+        }
+      },
+      {
+        "error": {
+          "name": "AssertionError",
+          "index": 0,
+          "test": "Status code is expected",
+          "message": "expected undefined to be one of [ 200, 201, 204, 400, 404 ]",
+          "stack": "AssertionError: expected undefined to be one of [ 200, 201, 204, 400, 404 ]\n   at Object.eval sandbox-script.js:1:3)",
+          "checksum": "58e3278429c64e3fb80b5d1ec7d649e7",
+          "id": "84ef2843-c25b-4d4c-86bc-538b12f18a1e",
+          "timestamp": 1771541529682,
+          "stacktrace": [
+            {
+              "fileName": "sandbox-script.js",
+              "lineNumber": 1,
+              "functionName": "Object.eval",
+              "typeName": "Object",
+              "methodName": "eval",
+              "columnNumber": 3,
+              "native": false
+            }
+          ]
+        },
+        "at": "assertion:0 in test-script",
+        "source": {
+          "id": "fb860729-eef0-42b6-b173-b6b82778aeda",
+          "name": "Login - Success",
+          "request": {
+            "url": {
+              "path": [
+                "login"
+              ],
+              "host": [
+                "{{baseUrl}}"
+              ],
+              "query": [],
+              "variable": []
+            },
+            "method": "POST",
+            "body": {
+              "mode": "raw",
+              "raw": "{\r\n  \"email\": \"eve.holt@reqres.in\",\r\n  \"password\": \"tester1234\"\r\n}\r\n",
+              "options": {
+                "raw": {
+                  "language": "json"
+                }
+              }
+            }
+          },
+          "response": [],
+          "event": [
+            {
+              "listen": "test",
+              "script": {
+                "id": "2ddfc9f9-04b2-4752-aec1-5fb7e6008c0c",
+                "type": "text/javascript",
+                "packages": {},
+                "exec": [
+                  "pm.test(\"Auth success returns token\", function () {\r",
+                  "  const json = pm.response.json();\r",
+                  "  pm.expect(json).to.have.property(\"token\");\r",
+                  "  pm.environment.set(\"token\", json.token);\r",
+                  "});\r",
+                  ""
+                ],
+                "_lastExecutionId": "71d4397d-20a3-4a3a-be1e-d41498a93d91"
+              }
+            }
+          ]
+        },
+        "parent": {
+          "_": {
+            "postman_id": "0e946f47-7d7c-4103-8ac6-a0a7a9885d56",
+            "exporter_id": "51643770",
+            "collection_link": "https://go.postman.co/collection/51643770-0e946f47-7d7c-4103-8ac6-a0a7a9885d56?source=collection_link"
+          },
+          "item": [
+            {
+              "id": "95e77fcf-8073-4be4-871f-ac0b6a9507e0",
+              "name": "Register - Success",
+              "request": {
+                "url": {
+                  "path": [
+                    "register"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [],
+                  "variable": []
+                },
+                "method": "POST",
+                "body": {
+                  "mode": "raw",
+                  "raw": "{\r\n  \"email\": \"eve.holt@reqres.in\",\r\n  \"password\": \"tester1234\"\r\n}\r\n",
+                  "options": {
+                    "raw": {
+                      "language": "json"
+                    }
+                  }
+                }
+              },
+              "response": [],
+              "event": [
+                {
+                  "listen": "test",
+                  "script": {
+                    "id": "d0f6d381-9e06-4be7-9d55-ce59e8c2b78a",
+                    "type": "text/javascript",
+                    "packages": {},
+                    "exec": [
+                      "pm.test(\"Auth success returns token\", function () {\r",
+                      "  const json = pm.response.json();\r",
+                      "  pm.expect(json).to.have.property(\"token\");\r",
+                      "  pm.environment.set(\"token\", json.token);\r",
+                      "});\r",
+                      ""
+                    ],
+                    "_lastExecutionId": "0e5e33b3-e090-418c-b016-586d66399085"
+                  }
+                }
+              ]
+            },
+            {
+              "id": "7543ce31-5b43-4d06-bf9d-4f793790c28c",
+              "name": "Register - Missing Password",
+              "request": {
+                "url": {
+                  "path": [
+                    "register"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [],
+                  "variable": []
+                },
+                "method": "POST"
+              },
+              "response": [],
+              "event": [
+                {
+                  "listen": "test",
+                  "script": {
+                    "id": "d6340a4e-1ba4-402b-a347-5e83fe21e14f",
+                    "type": "text/javascript",
+                    "packages": {},
+                    "exec": [
+                      "pm.test(\"Auth failure returns error message\", function () {\r",
+                      "  const json = pm.response.json();\r",
+                      "  pm.expect(json).to.have.property(\"error\");\r",
+                      "  pm.expect(json.error).to.be.a(\"string\").and.not.empty;\r",
+                      "});\r",
+                      ""
+                    ],
+                    "_lastExecutionId": "bc735681-510f-4213-83a4-4d88322d05a4"
+                  }
+                }
+              ]
+            },
+            {
+              "id": "fb860729-eef0-42b6-b173-b6b82778aeda",
+              "name": "Login - Success",
+              "request": {
+                "url": {
+                  "path": [
+                    "login"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [],
+                  "variable": []
+                },
+                "method": "POST",
+                "body": {
+                  "mode": "raw",
+                  "raw": "{\r\n  \"email\": \"eve.holt@reqres.in\",\r\n  \"password\": \"tester1234\"\r\n}\r\n",
+                  "options": {
+                    "raw": {
+                      "language": "json"
+                    }
+                  }
+                }
+              },
+              "response": [],
+              "event": [
+                {
+                  "listen": "test",
+                  "script": {
+                    "id": "2ddfc9f9-04b2-4752-aec1-5fb7e6008c0c",
+                    "type": "text/javascript",
+                    "packages": {},
+                    "exec": [
+                      "pm.test(\"Auth success returns token\", function () {\r",
+                      "  const json = pm.response.json();\r",
+                      "  pm.expect(json).to.have.property(\"token\");\r",
+                      "  pm.environment.set(\"token\", json.token);\r",
+                      "});\r",
+                      ""
+                    ],
+                    "_lastExecutionId": "71d4397d-20a3-4a3a-be1e-d41498a93d91"
+                  }
+                }
+              ]
+            },
+            {
+              "id": "dcd2467d-1c04-4455-bcd9-c928b6c90f13",
+              "name": "Login - Missing Password",
+              "request": {
+                "url": {
+                  "path": [
+                    "login"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [],
+                  "variable": []
+                },
+                "method": "POST",
+                "body": {
+                  "mode": "raw",
+                  "raw": "{\r\n  \"email\": \"eve.holt@reqres.in\"\r\n}\r\n",
+                  "options": {
+                    "raw": {
+                      "language": "json"
+                    }
+                  }
+                }
+              },
+              "response": [],
+              "event": [
+                {
+                  "listen": "test",
+                  "script": {
+                    "id": "e26f6771-ebb7-4539-a6ee-ac53810ad1b6",
+                    "type": "text/javascript",
+                    "packages": {},
+                    "exec": [
+                      "pm.test(\"Auth failure returns error message\", function () {\r",
+                      "  const json = pm.response.json();\r",
+                      "  pm.expect(json).to.have.property(\"error\");\r",
+                      "  pm.expect(json.error).to.be.a(\"string\").and.not.empty;\r",
+                      "});\r",
+                      ""
+                    ],
+                    "_lastExecutionId": "8018d8c6-2fb0-4163-9b7f-90e6d39f7e75"
+                  }
+                }
+              ]
+            }
+          ],
+          "auth": {
+            "type": "apikey",
+            "apikey": [
+              {
+                "type": "string",
+                "value": "x-api-key",
+                "key": "key"
+              },
+              {
+                "type": "string",
+                "value": "{{apiKey}}",
+                "key": "value"
+              }
+            ]
+          },
+          "event": [
+            {
+              "listen": "prerequest",
+              "script": {
+                "id": "ee82ac11-c721-49f1-9879-a544e6b758e4",
+                "type": "text/javascript",
+                "packages": {},
+                "exec": [
+                  ""
+                ],
+                "_lastExecutionId": "1445946b-9d00-4d08-b3be-01fadb357c5f"
+              }
+            },
+            {
+              "listen": "test",
+              "script": {
+                "id": "5445a0ab-6c81-4252-bde9-e8fe9b8e6cec",
+                "type": "text/javascript",
+                "packages": {},
+                "exec": [
+                  "pm.test(\"Status code is expected\", function () {\r",
+                  "  pm.expect(pm.response.code).to.be.oneOf([200, 201, 204, 400, 404]);\r",
+                  "});\r",
+                  "\r",
+                  "pm.test(\"Response is JSON when body exists\", function () {\r",
+                  "  if (pm.response.text()) {\r",
+                  "    pm.response.to.be.json;\r",
+                  "  }\r",
+                  "});\r",
+                  ""
+                ],
+                "_lastExecutionId": "da7a5f57-6c77-4f8c-81eb-8e75a54e11e1"
+              }
+            }
+          ],
+          "variable": [],
+          "info": {
+            "_postman_id": "0e946f47-7d7c-4103-8ac6-a0a7a9885d56",
+            "name": "Auth FLows",
+            "schema": "https://schema.getpostman.com/json/collection/v2.1.0/collection.json"
+          }
+        },
+        "cursor": {
+          "ref": "4fe0687e-207a-4980-863e-e0ccf4e51f25",
+          "length": 4,
+          "cycles": 1,
+          "position": 2,
+          "iteration": 0,
+          "httpRequestId": "77ccd205-42f6-4855-828a-0935e5362b26",
+          "scriptId": "5445a0ab-6c81-4252-bde9-e8fe9b8e6cec",
+          "execution": "996d8d1d-0110-490c-8007-196f05ef87ca"
+        }
+      },
+      {
+        "error": {
+          "name": "JSONError",
+          "index": 0,
+          "test": "Auth success returns token",
+          "message": "\"undefined\" is not valid JSON",
+          "stack": "JSONError: \"undefined\" is not valid JSON\n   at Object.eval sandbox-script.js:1:3)",
+          "checksum": "2a3c201c8b5c28b392389f34121efc5b",
+          "id": "9f7157aa-7701-4a76-a8e9-176f8c66bf2b",
+          "timestamp": 1771541529684,
+          "stacktrace": [
+            {
+              "fileName": "sandbox-script.js",
+              "lineNumber": 1,
+              "functionName": "Object.eval",
+              "typeName": "Object",
+              "methodName": "eval",
+              "columnNumber": 3,
+              "native": false
+            }
+          ]
+        },
+        "at": "assertion:0 in test-script",
+        "source": {
+          "id": "fb860729-eef0-42b6-b173-b6b82778aeda",
+          "name": "Login - Success",
+          "request": {
+            "url": {
+              "path": [
+                "login"
+              ],
+              "host": [
+                "{{baseUrl}}"
+              ],
+              "query": [],
+              "variable": []
+            },
+            "method": "POST",
+            "body": {
+              "mode": "raw",
+              "raw": "{\r\n  \"email\": \"eve.holt@reqres.in\",\r\n  \"password\": \"tester1234\"\r\n}\r\n",
+              "options": {
+                "raw": {
+                  "language": "json"
+                }
+              }
+            }
+          },
+          "response": [],
+          "event": [
+            {
+              "listen": "test",
+              "script": {
+                "id": "2ddfc9f9-04b2-4752-aec1-5fb7e6008c0c",
+                "type": "text/javascript",
+                "packages": {},
+                "exec": [
+                  "pm.test(\"Auth success returns token\", function () {\r",
+                  "  const json = pm.response.json();\r",
+                  "  pm.expect(json).to.have.property(\"token\");\r",
+                  "  pm.environment.set(\"token\", json.token);\r",
+                  "});\r",
+                  ""
+                ],
+                "_lastExecutionId": "71d4397d-20a3-4a3a-be1e-d41498a93d91"
+              }
+            }
+          ]
+        },
+        "parent": {
+          "_": {
+            "postman_id": "0e946f47-7d7c-4103-8ac6-a0a7a9885d56",
+            "exporter_id": "51643770",
+            "collection_link": "https://go.postman.co/collection/51643770-0e946f47-7d7c-4103-8ac6-a0a7a9885d56?source=collection_link"
+          },
+          "item": [
+            {
+              "id": "95e77fcf-8073-4be4-871f-ac0b6a9507e0",
+              "name": "Register - Success",
+              "request": {
+                "url": {
+                  "path": [
+                    "register"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [],
+                  "variable": []
+                },
+                "method": "POST",
+                "body": {
+                  "mode": "raw",
+                  "raw": "{\r\n  \"email\": \"eve.holt@reqres.in\",\r\n  \"password\": \"tester1234\"\r\n}\r\n",
+                  "options": {
+                    "raw": {
+                      "language": "json"
+                    }
+                  }
+                }
+              },
+              "response": [],
+              "event": [
+                {
+                  "listen": "test",
+                  "script": {
+                    "id": "d0f6d381-9e06-4be7-9d55-ce59e8c2b78a",
+                    "type": "text/javascript",
+                    "packages": {},
+                    "exec": [
+                      "pm.test(\"Auth success returns token\", function () {\r",
+                      "  const json = pm.response.json();\r",
+                      "  pm.expect(json).to.have.property(\"token\");\r",
+                      "  pm.environment.set(\"token\", json.token);\r",
+                      "});\r",
+                      ""
+                    ],
+                    "_lastExecutionId": "0e5e33b3-e090-418c-b016-586d66399085"
+                  }
+                }
+              ]
+            },
+            {
+              "id": "7543ce31-5b43-4d06-bf9d-4f793790c28c",
+              "name": "Register - Missing Password",
+              "request": {
+                "url": {
+                  "path": [
+                    "register"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [],
+                  "variable": []
+                },
+                "method": "POST"
+              },
+              "response": [],
+              "event": [
+                {
+                  "listen": "test",
+                  "script": {
+                    "id": "d6340a4e-1ba4-402b-a347-5e83fe21e14f",
+                    "type": "text/javascript",
+                    "packages": {},
+                    "exec": [
+                      "pm.test(\"Auth failure returns error message\", function () {\r",
+                      "  const json = pm.response.json();\r",
+                      "  pm.expect(json).to.have.property(\"error\");\r",
+                      "  pm.expect(json.error).to.be.a(\"string\").and.not.empty;\r",
+                      "});\r",
+                      ""
+                    ],
+                    "_lastExecutionId": "bc735681-510f-4213-83a4-4d88322d05a4"
+                  }
+                }
+              ]
+            },
+            {
+              "id": "fb860729-eef0-42b6-b173-b6b82778aeda",
+              "name": "Login - Success",
+              "request": {
+                "url": {
+                  "path": [
+                    "login"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [],
+                  "variable": []
+                },
+                "method": "POST",
+                "body": {
+                  "mode": "raw",
+                  "raw": "{\r\n  \"email\": \"eve.holt@reqres.in\",\r\n  \"password\": \"tester1234\"\r\n}\r\n",
+                  "options": {
+                    "raw": {
+                      "language": "json"
+                    }
+                  }
+                }
+              },
+              "response": [],
+              "event": [
+                {
+                  "listen": "test",
+                  "script": {
+                    "id": "2ddfc9f9-04b2-4752-aec1-5fb7e6008c0c",
+                    "type": "text/javascript",
+                    "packages": {},
+                    "exec": [
+                      "pm.test(\"Auth success returns token\", function () {\r",
+                      "  const json = pm.response.json();\r",
+                      "  pm.expect(json).to.have.property(\"token\");\r",
+                      "  pm.environment.set(\"token\", json.token);\r",
+                      "});\r",
+                      ""
+                    ],
+                    "_lastExecutionId": "71d4397d-20a3-4a3a-be1e-d41498a93d91"
+                  }
+                }
+              ]
+            },
+            {
+              "id": "dcd2467d-1c04-4455-bcd9-c928b6c90f13",
+              "name": "Login - Missing Password",
+              "request": {
+                "url": {
+                  "path": [
+                    "login"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [],
+                  "variable": []
+                },
+                "method": "POST",
+                "body": {
+                  "mode": "raw",
+                  "raw": "{\r\n  \"email\": \"eve.holt@reqres.in\"\r\n}\r\n",
+                  "options": {
+                    "raw": {
+                      "language": "json"
+                    }
+                  }
+                }
+              },
+              "response": [],
+              "event": [
+                {
+                  "listen": "test",
+                  "script": {
+                    "id": "e26f6771-ebb7-4539-a6ee-ac53810ad1b6",
+                    "type": "text/javascript",
+                    "packages": {},
+                    "exec": [
+                      "pm.test(\"Auth failure returns error message\", function () {\r",
+                      "  const json = pm.response.json();\r",
+                      "  pm.expect(json).to.have.property(\"error\");\r",
+                      "  pm.expect(json.error).to.be.a(\"string\").and.not.empty;\r",
+                      "});\r",
+                      ""
+                    ],
+                    "_lastExecutionId": "8018d8c6-2fb0-4163-9b7f-90e6d39f7e75"
+                  }
+                }
+              ]
+            }
+          ],
+          "auth": {
+            "type": "apikey",
+            "apikey": [
+              {
+                "type": "string",
+                "value": "x-api-key",
+                "key": "key"
+              },
+              {
+                "type": "string",
+                "value": "{{apiKey}}",
+                "key": "value"
+              }
+            ]
+          },
+          "event": [
+            {
+              "listen": "prerequest",
+              "script": {
+                "id": "ee82ac11-c721-49f1-9879-a544e6b758e4",
+                "type": "text/javascript",
+                "packages": {},
+                "exec": [
+                  ""
+                ],
+                "_lastExecutionId": "1445946b-9d00-4d08-b3be-01fadb357c5f"
+              }
+            },
+            {
+              "listen": "test",
+              "script": {
+                "id": "5445a0ab-6c81-4252-bde9-e8fe9b8e6cec",
+                "type": "text/javascript",
+                "packages": {},
+                "exec": [
+                  "pm.test(\"Status code is expected\", function () {\r",
+                  "  pm.expect(pm.response.code).to.be.oneOf([200, 201, 204, 400, 404]);\r",
+                  "});\r",
+                  "\r",
+                  "pm.test(\"Response is JSON when body exists\", function () {\r",
+                  "  if (pm.response.text()) {\r",
+                  "    pm.response.to.be.json;\r",
+                  "  }\r",
+                  "});\r",
+                  ""
+                ],
+                "_lastExecutionId": "da7a5f57-6c77-4f8c-81eb-8e75a54e11e1"
+              }
+            }
+          ],
+          "variable": [],
+          "info": {
+            "_postman_id": "0e946f47-7d7c-4103-8ac6-a0a7a9885d56",
+            "name": "Auth FLows",
+            "schema": "https://schema.getpostman.com/json/collection/v2.1.0/collection.json"
+          }
+        },
+        "cursor": {
+          "ref": "4fe0687e-207a-4980-863e-e0ccf4e51f25",
+          "length": 4,
+          "cycles": 1,
+          "position": 2,
+          "iteration": 0,
+          "httpRequestId": "77ccd205-42f6-4855-828a-0935e5362b26",
+          "scriptId": "2ddfc9f9-04b2-4752-aec1-5fb7e6008c0c",
+          "execution": "71d4397d-20a3-4a3a-be1e-d41498a93d91"
+        }
+      },
+      {
+        "error": {
+          "errno": -3008,
+          "code": "ENOTFOUND",
+          "syscall": "getaddrinfo",
+          "hostname": "{{baseurl}}",
+          "name": "Error",
+          "message": "getaddrinfo ENOTFOUND {{baseurl}}",
+          "stack": "Error: getaddrinfo ENOTFOUND {{baseurl}}\n    at GetAddrInfoReqWrap.onlookupall [as oncomplete] (node:dns:121:26)",
+          "checksum": "40411357de20efe8fb1b1482afbb4411",
+          "id": "b65c43e9-94f3-4ef3-bce1-91c5301e4f65",
+          "timestamp": 1771541529759,
+          "stacktrace": [
+            {
+              "fileName": "node:dns",
+              "lineNumber": 121,
+              "functionName": "GetAddrInfoReqWrap.onlookupall [as oncomplete]",
+              "typeName": "GetAddrInfoReqWrap",
+              "methodName": "onlookupall [as oncomplete]",
+              "columnNumber": 26,
+              "native": false
+            }
+          ]
+        },
+        "at": "request",
+        "source": {
+          "id": "dcd2467d-1c04-4455-bcd9-c928b6c90f13",
+          "name": "Login - Missing Password",
+          "request": {
+            "url": {
+              "protocol": "http",
+              "path": [
+                "login"
+              ],
+              "host": [
+                "{{baseurl}}"
+              ],
+              "query": [],
+              "variable": []
+            },
+            "header": [
+              {
+                "key": "Content-Type",
+                "value": "application/json",
+                "system": true
+              },
+              {
+                "key": "x-api-key",
+                "value": "{{apiKey}}",
+                "system": true
+              },
+              {
+                "key": "User-Agent",
+                "value": "PostmanRuntime/7.39.1",
+                "system": true
+              },
+              {
+                "key": "Accept",
+                "value": "*/*",
+                "system": true
+              },
+              {
+                "key": "Cache-Control",
+                "value": "no-cache",
+                "system": true
+              },
+              {
+                "key": "Postman-Token",
+                "value": "60044fc7-440d-437d-8b74-e524f012e90e",
+                "system": true
+              },
+              {
+                "key": "Host",
+                "value": "{{baseurl}}",
+                "system": true
+              },
+              {
+                "key": "Accept-Encoding",
+                "value": "gzip, deflate, br",
+                "system": true
+              },
+              {
+                "key": "Connection",
+                "value": "keep-alive",
+                "system": true
+              }
+            ],
+            "method": "POST",
+            "body": {
+              "mode": "raw",
+              "raw": "{\r\n  \"email\": \"eve.holt@reqres.in\"\r\n}\r\n",
+              "options": {
+                "raw": {
+                  "language": "json"
+                }
+              }
+            }
+          },
+          "response": [],
+          "event": [
+            {
+              "listen": "test",
+              "script": {
+                "id": "e26f6771-ebb7-4539-a6ee-ac53810ad1b6",
+                "type": "text/javascript",
+                "packages": {},
+                "exec": [
+                  "pm.test(\"Auth failure returns error message\", function () {\r",
+                  "  const json = pm.response.json();\r",
+                  "  pm.expect(json).to.have.property(\"error\");\r",
+                  "  pm.expect(json.error).to.be.a(\"string\").and.not.empty;\r",
+                  "});\r",
+                  ""
+                ]
+              }
+            }
+          ]
+        },
+        "cursor": {
+          "ref": "1e352d5a-d9a3-4f74-a054-240880e01820",
+          "length": 4,
+          "cycles": 1,
+          "position": 3,
+          "iteration": 0,
+          "httpRequestId": "835dc8dd-7da5-48d8-81c4-6e15c77c3d15"
+        }
+      },
+      {
+        "error": {
+          "name": "AssertionError",
+          "index": 0,
+          "test": "Status code is expected",
+          "message": "expected undefined to be one of [ 200, 201, 204, 400, 404 ]",
+          "stack": "AssertionError: expected undefined to be one of [ 200, 201, 204, 400, 404 ]\n   at Object.eval sandbox-script.js:1:4)",
+          "checksum": "3f6843b105604aa8160948516dd23927",
+          "id": "177dc174-2637-48d0-8215-20b45d7ecac5",
+          "timestamp": 1771541529776,
+          "stacktrace": [
+            {
+              "fileName": "sandbox-script.js",
+              "lineNumber": 1,
+              "functionName": "Object.eval",
+              "typeName": "Object",
+              "methodName": "eval",
+              "columnNumber": 4,
+              "native": false
+            }
+          ]
+        },
+        "at": "assertion:0 in test-script",
+        "source": {
+          "id": "dcd2467d-1c04-4455-bcd9-c928b6c90f13",
+          "name": "Login - Missing Password",
+          "request": {
+            "url": {
+              "path": [
+                "login"
+              ],
+              "host": [
+                "{{baseUrl}}"
+              ],
+              "query": [],
+              "variable": []
+            },
+            "method": "POST",
+            "body": {
+              "mode": "raw",
+              "raw": "{\r\n  \"email\": \"eve.holt@reqres.in\"\r\n}\r\n",
+              "options": {
+                "raw": {
+                  "language": "json"
+                }
+              }
+            }
+          },
+          "response": [],
+          "event": [
+            {
+              "listen": "test",
+              "script": {
+                "id": "e26f6771-ebb7-4539-a6ee-ac53810ad1b6",
+                "type": "text/javascript",
+                "packages": {},
+                "exec": [
+                  "pm.test(\"Auth failure returns error message\", function () {\r",
+                  "  const json = pm.response.json();\r",
+                  "  pm.expect(json).to.have.property(\"error\");\r",
+                  "  pm.expect(json.error).to.be.a(\"string\").and.not.empty;\r",
+                  "});\r",
+                  ""
+                ],
+                "_lastExecutionId": "8018d8c6-2fb0-4163-9b7f-90e6d39f7e75"
+              }
+            }
+          ]
+        },
+        "parent": {
+          "_": {
+            "postman_id": "0e946f47-7d7c-4103-8ac6-a0a7a9885d56",
+            "exporter_id": "51643770",
+            "collection_link": "https://go.postman.co/collection/51643770-0e946f47-7d7c-4103-8ac6-a0a7a9885d56?source=collection_link"
+          },
+          "item": [
+            {
+              "id": "95e77fcf-8073-4be4-871f-ac0b6a9507e0",
+              "name": "Register - Success",
+              "request": {
+                "url": {
+                  "path": [
+                    "register"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [],
+                  "variable": []
+                },
+                "method": "POST",
+                "body": {
+                  "mode": "raw",
+                  "raw": "{\r\n  \"email\": \"eve.holt@reqres.in\",\r\n  \"password\": \"tester1234\"\r\n}\r\n",
+                  "options": {
+                    "raw": {
+                      "language": "json"
+                    }
+                  }
+                }
+              },
+              "response": [],
+              "event": [
+                {
+                  "listen": "test",
+                  "script": {
+                    "id": "d0f6d381-9e06-4be7-9d55-ce59e8c2b78a",
+                    "type": "text/javascript",
+                    "packages": {},
+                    "exec": [
+                      "pm.test(\"Auth success returns token\", function () {\r",
+                      "  const json = pm.response.json();\r",
+                      "  pm.expect(json).to.have.property(\"token\");\r",
+                      "  pm.environment.set(\"token\", json.token);\r",
+                      "});\r",
+                      ""
+                    ],
+                    "_lastExecutionId": "0e5e33b3-e090-418c-b016-586d66399085"
+                  }
+                }
+              ]
+            },
+            {
+              "id": "7543ce31-5b43-4d06-bf9d-4f793790c28c",
+              "name": "Register - Missing Password",
+              "request": {
+                "url": {
+                  "path": [
+                    "register"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [],
+                  "variable": []
+                },
+                "method": "POST"
+              },
+              "response": [],
+              "event": [
+                {
+                  "listen": "test",
+                  "script": {
+                    "id": "d6340a4e-1ba4-402b-a347-5e83fe21e14f",
+                    "type": "text/javascript",
+                    "packages": {},
+                    "exec": [
+                      "pm.test(\"Auth failure returns error message\", function () {\r",
+                      "  const json = pm.response.json();\r",
+                      "  pm.expect(json).to.have.property(\"error\");\r",
+                      "  pm.expect(json.error).to.be.a(\"string\").and.not.empty;\r",
+                      "});\r",
+                      ""
+                    ],
+                    "_lastExecutionId": "bc735681-510f-4213-83a4-4d88322d05a4"
+                  }
+                }
+              ]
+            },
+            {
+              "id": "fb860729-eef0-42b6-b173-b6b82778aeda",
+              "name": "Login - Success",
+              "request": {
+                "url": {
+                  "path": [
+                    "login"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [],
+                  "variable": []
+                },
+                "method": "POST",
+                "body": {
+                  "mode": "raw",
+                  "raw": "{\r\n  \"email\": \"eve.holt@reqres.in\",\r\n  \"password\": \"tester1234\"\r\n}\r\n",
+                  "options": {
+                    "raw": {
+                      "language": "json"
+                    }
+                  }
+                }
+              },
+              "response": [],
+              "event": [
+                {
+                  "listen": "test",
+                  "script": {
+                    "id": "2ddfc9f9-04b2-4752-aec1-5fb7e6008c0c",
+                    "type": "text/javascript",
+                    "packages": {},
+                    "exec": [
+                      "pm.test(\"Auth success returns token\", function () {\r",
+                      "  const json = pm.response.json();\r",
+                      "  pm.expect(json).to.have.property(\"token\");\r",
+                      "  pm.environment.set(\"token\", json.token);\r",
+                      "});\r",
+                      ""
+                    ],
+                    "_lastExecutionId": "71d4397d-20a3-4a3a-be1e-d41498a93d91"
+                  }
+                }
+              ]
+            },
+            {
+              "id": "dcd2467d-1c04-4455-bcd9-c928b6c90f13",
+              "name": "Login - Missing Password",
+              "request": {
+                "url": {
+                  "path": [
+                    "login"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [],
+                  "variable": []
+                },
+                "method": "POST",
+                "body": {
+                  "mode": "raw",
+                  "raw": "{\r\n  \"email\": \"eve.holt@reqres.in\"\r\n}\r\n",
+                  "options": {
+                    "raw": {
+                      "language": "json"
+                    }
+                  }
+                }
+              },
+              "response": [],
+              "event": [
+                {
+                  "listen": "test",
+                  "script": {
+                    "id": "e26f6771-ebb7-4539-a6ee-ac53810ad1b6",
+                    "type": "text/javascript",
+                    "packages": {},
+                    "exec": [
+                      "pm.test(\"Auth failure returns error message\", function () {\r",
+                      "  const json = pm.response.json();\r",
+                      "  pm.expect(json).to.have.property(\"error\");\r",
+                      "  pm.expect(json.error).to.be.a(\"string\").and.not.empty;\r",
+                      "});\r",
+                      ""
+                    ],
+                    "_lastExecutionId": "8018d8c6-2fb0-4163-9b7f-90e6d39f7e75"
+                  }
+                }
+              ]
+            }
+          ],
+          "auth": {
+            "type": "apikey",
+            "apikey": [
+              {
+                "type": "string",
+                "value": "x-api-key",
+                "key": "key"
+              },
+              {
+                "type": "string",
+                "value": "{{apiKey}}",
+                "key": "value"
+              }
+            ]
+          },
+          "event": [
+            {
+              "listen": "prerequest",
+              "script": {
+                "id": "ee82ac11-c721-49f1-9879-a544e6b758e4",
+                "type": "text/javascript",
+                "packages": {},
+                "exec": [
+                  ""
+                ],
+                "_lastExecutionId": "1445946b-9d00-4d08-b3be-01fadb357c5f"
+              }
+            },
+            {
+              "listen": "test",
+              "script": {
+                "id": "5445a0ab-6c81-4252-bde9-e8fe9b8e6cec",
+                "type": "text/javascript",
+                "packages": {},
+                "exec": [
+                  "pm.test(\"Status code is expected\", function () {\r",
+                  "  pm.expect(pm.response.code).to.be.oneOf([200, 201, 204, 400, 404]);\r",
+                  "});\r",
+                  "\r",
+                  "pm.test(\"Response is JSON when body exists\", function () {\r",
+                  "  if (pm.response.text()) {\r",
+                  "    pm.response.to.be.json;\r",
+                  "  }\r",
+                  "});\r",
+                  ""
+                ],
+                "_lastExecutionId": "da7a5f57-6c77-4f8c-81eb-8e75a54e11e1"
+              }
+            }
+          ],
+          "variable": [],
+          "info": {
+            "_postman_id": "0e946f47-7d7c-4103-8ac6-a0a7a9885d56",
+            "name": "Auth FLows",
+            "schema": "https://schema.getpostman.com/json/collection/v2.1.0/collection.json"
+          }
+        },
+        "cursor": {
+          "ref": "1e352d5a-d9a3-4f74-a054-240880e01820",
+          "length": 4,
+          "cycles": 1,
+          "position": 3,
+          "iteration": 0,
+          "httpRequestId": "835dc8dd-7da5-48d8-81c4-6e15c77c3d15",
+          "scriptId": "5445a0ab-6c81-4252-bde9-e8fe9b8e6cec",
+          "execution": "da7a5f57-6c77-4f8c-81eb-8e75a54e11e1"
+        }
+      },
+      {
+        "error": {
+          "name": "JSONError",
+          "index": 0,
+          "test": "Auth failure returns error message",
+          "message": "\"undefined\" is not valid JSON",
+          "stack": "JSONError: \"undefined\" is not valid JSON\n   at Object.eval sandbox-script.js:1:4)",
+          "checksum": "8996dd75e755148adc78d91e72318f4d",
+          "id": "005c0360-c8e4-48f5-83a0-672846ddcdda",
+          "timestamp": 1771541529777,
+          "stacktrace": [
+            {
+              "fileName": "sandbox-script.js",
+              "lineNumber": 1,
+              "functionName": "Object.eval",
+              "typeName": "Object",
+              "methodName": "eval",
+              "columnNumber": 4,
+              "native": false
+            }
+          ]
+        },
+        "at": "assertion:0 in test-script",
+        "source": {
+          "id": "dcd2467d-1c04-4455-bcd9-c928b6c90f13",
+          "name": "Login - Missing Password",
+          "request": {
+            "url": {
+              "path": [
+                "login"
+              ],
+              "host": [
+                "{{baseUrl}}"
+              ],
+              "query": [],
+              "variable": []
+            },
+            "method": "POST",
+            "body": {
+              "mode": "raw",
+              "raw": "{\r\n  \"email\": \"eve.holt@reqres.in\"\r\n}\r\n",
+              "options": {
+                "raw": {
+                  "language": "json"
+                }
+              }
+            }
+          },
+          "response": [],
+          "event": [
+            {
+              "listen": "test",
+              "script": {
+                "id": "e26f6771-ebb7-4539-a6ee-ac53810ad1b6",
+                "type": "text/javascript",
+                "packages": {},
+                "exec": [
+                  "pm.test(\"Auth failure returns error message\", function () {\r",
+                  "  const json = pm.response.json();\r",
+                  "  pm.expect(json).to.have.property(\"error\");\r",
+                  "  pm.expect(json.error).to.be.a(\"string\").and.not.empty;\r",
+                  "});\r",
+                  ""
+                ],
+                "_lastExecutionId": "8018d8c6-2fb0-4163-9b7f-90e6d39f7e75"
+              }
+            }
+          ]
+        },
+        "parent": {
+          "_": {
+            "postman_id": "0e946f47-7d7c-4103-8ac6-a0a7a9885d56",
+            "exporter_id": "51643770",
+            "collection_link": "https://go.postman.co/collection/51643770-0e946f47-7d7c-4103-8ac6-a0a7a9885d56?source=collection_link"
+          },
+          "item": [
+            {
+              "id": "95e77fcf-8073-4be4-871f-ac0b6a9507e0",
+              "name": "Register - Success",
+              "request": {
+                "url": {
+                  "path": [
+                    "register"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [],
+                  "variable": []
+                },
+                "method": "POST",
+                "body": {
+                  "mode": "raw",
+                  "raw": "{\r\n  \"email\": \"eve.holt@reqres.in\",\r\n  \"password\": \"tester1234\"\r\n}\r\n",
+                  "options": {
+                    "raw": {
+                      "language": "json"
+                    }
+                  }
+                }
+              },
+              "response": [],
+              "event": [
+                {
+                  "listen": "test",
+                  "script": {
+                    "id": "d0f6d381-9e06-4be7-9d55-ce59e8c2b78a",
+                    "type": "text/javascript",
+                    "packages": {},
+                    "exec": [
+                      "pm.test(\"Auth success returns token\", function () {\r",
+                      "  const json = pm.response.json();\r",
+                      "  pm.expect(json).to.have.property(\"token\");\r",
+                      "  pm.environment.set(\"token\", json.token);\r",
+                      "});\r",
+                      ""
+                    ],
+                    "_lastExecutionId": "0e5e33b3-e090-418c-b016-586d66399085"
+                  }
+                }
+              ]
+            },
+            {
+              "id": "7543ce31-5b43-4d06-bf9d-4f793790c28c",
+              "name": "Register - Missing Password",
+              "request": {
+                "url": {
+                  "path": [
+                    "register"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [],
+                  "variable": []
+                },
+                "method": "POST"
+              },
+              "response": [],
+              "event": [
+                {
+                  "listen": "test",
+                  "script": {
+                    "id": "d6340a4e-1ba4-402b-a347-5e83fe21e14f",
+                    "type": "text/javascript",
+                    "packages": {},
+                    "exec": [
+                      "pm.test(\"Auth failure returns error message\", function () {\r",
+                      "  const json = pm.response.json();\r",
+                      "  pm.expect(json).to.have.property(\"error\");\r",
+                      "  pm.expect(json.error).to.be.a(\"string\").and.not.empty;\r",
+                      "});\r",
+                      ""
+                    ],
+                    "_lastExecutionId": "bc735681-510f-4213-83a4-4d88322d05a4"
+                  }
+                }
+              ]
+            },
+            {
+              "id": "fb860729-eef0-42b6-b173-b6b82778aeda",
+              "name": "Login - Success",
+              "request": {
+                "url": {
+                  "path": [
+                    "login"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [],
+                  "variable": []
+                },
+                "method": "POST",
+                "body": {
+                  "mode": "raw",
+                  "raw": "{\r\n  \"email\": \"eve.holt@reqres.in\",\r\n  \"password\": \"tester1234\"\r\n}\r\n",
+                  "options": {
+                    "raw": {
+                      "language": "json"
+                    }
+                  }
+                }
+              },
+              "response": [],
+              "event": [
+                {
+                  "listen": "test",
+                  "script": {
+                    "id": "2ddfc9f9-04b2-4752-aec1-5fb7e6008c0c",
+                    "type": "text/javascript",
+                    "packages": {},
+                    "exec": [
+                      "pm.test(\"Auth success returns token\", function () {\r",
+                      "  const json = pm.response.json();\r",
+                      "  pm.expect(json).to.have.property(\"token\");\r",
+                      "  pm.environment.set(\"token\", json.token);\r",
+                      "});\r",
+                      ""
+                    ],
+                    "_lastExecutionId": "71d4397d-20a3-4a3a-be1e-d41498a93d91"
+                  }
+                }
+              ]
+            },
+            {
+              "id": "dcd2467d-1c04-4455-bcd9-c928b6c90f13",
+              "name": "Login - Missing Password",
+              "request": {
+                "url": {
+                  "path": [
+                    "login"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [],
+                  "variable": []
+                },
+                "method": "POST",
+                "body": {
+                  "mode": "raw",
+                  "raw": "{\r\n  \"email\": \"eve.holt@reqres.in\"\r\n}\r\n",
+                  "options": {
+                    "raw": {
+                      "language": "json"
+                    }
+                  }
+                }
+              },
+              "response": [],
+              "event": [
+                {
+                  "listen": "test",
+                  "script": {
+                    "id": "e26f6771-ebb7-4539-a6ee-ac53810ad1b6",
+                    "type": "text/javascript",
+                    "packages": {},
+                    "exec": [
+                      "pm.test(\"Auth failure returns error message\", function () {\r",
+                      "  const json = pm.response.json();\r",
+                      "  pm.expect(json).to.have.property(\"error\");\r",
+                      "  pm.expect(json.error).to.be.a(\"string\").and.not.empty;\r",
+                      "});\r",
+                      ""
+                    ],
+                    "_lastExecutionId": "8018d8c6-2fb0-4163-9b7f-90e6d39f7e75"
+                  }
+                }
+              ]
+            }
+          ],
+          "auth": {
+            "type": "apikey",
+            "apikey": [
+              {
+                "type": "string",
+                "value": "x-api-key",
+                "key": "key"
+              },
+              {
+                "type": "string",
+                "value": "{{apiKey}}",
+                "key": "value"
+              }
+            ]
+          },
+          "event": [
+            {
+              "listen": "prerequest",
+              "script": {
+                "id": "ee82ac11-c721-49f1-9879-a544e6b758e4",
+                "type": "text/javascript",
+                "packages": {},
+                "exec": [
+                  ""
+                ],
+                "_lastExecutionId": "1445946b-9d00-4d08-b3be-01fadb357c5f"
+              }
+            },
+            {
+              "listen": "test",
+              "script": {
+                "id": "5445a0ab-6c81-4252-bde9-e8fe9b8e6cec",
+                "type": "text/javascript",
+                "packages": {},
+                "exec": [
+                  "pm.test(\"Status code is expected\", function () {\r",
+                  "  pm.expect(pm.response.code).to.be.oneOf([200, 201, 204, 400, 404]);\r",
+                  "});\r",
+                  "\r",
+                  "pm.test(\"Response is JSON when body exists\", function () {\r",
+                  "  if (pm.response.text()) {\r",
+                  "    pm.response.to.be.json;\r",
+                  "  }\r",
+                  "});\r",
+                  ""
+                ],
+                "_lastExecutionId": "da7a5f57-6c77-4f8c-81eb-8e75a54e11e1"
+              }
+            }
+          ],
+          "variable": [],
+          "info": {
+            "_postman_id": "0e946f47-7d7c-4103-8ac6-a0a7a9885d56",
+            "name": "Auth FLows",
+            "schema": "https://schema.getpostman.com/json/collection/v2.1.0/collection.json"
+          }
+        },
+        "cursor": {
+          "ref": "1e352d5a-d9a3-4f74-a054-240880e01820",
+          "length": 4,
+          "cycles": 1,
+          "position": 3,
+          "iteration": 0,
+          "httpRequestId": "835dc8dd-7da5-48d8-81c4-6e15c77c3d15",
+          "scriptId": "e26f6771-ebb7-4539-a6ee-ac53810ad1b6",
+          "execution": "8018d8c6-2fb0-4163-9b7f-90e6d39f7e75"
+        }
+      }
+    ],
+    "error": null
+  }
+}

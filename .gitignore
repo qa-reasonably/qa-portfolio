@@ -6,3 +6,6 @@ node_modules/
 /playwright/.cache/
 
 *.env
+
+# Newman test reports
+api-testing/postman/reports/
