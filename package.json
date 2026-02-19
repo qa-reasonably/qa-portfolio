@@ -1,0 +1,14 @@
+{
+  "name": "qa-portfolio",
+  "private": true,
+  "scripts": {
+    "test": "playwright test",
+    "test:headed": "playwright test --headed",
+    "test:ui": "playwright test --ui",
+    "report": "playwright show-report"
+  },
+  "devDependencies": {
+    "@playwright/test": "^1.58.2",
+    "@applitools/eyes-playwright": "^1.44.3"
+  }
+}
