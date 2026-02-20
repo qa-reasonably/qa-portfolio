@@ -1,4 +1,4 @@
-# QA Portfolio
+# Test Automation and Validation Portfolio
 
 This repository documents hands-on Quality Assurance work across UI investigation, API testing, and automated regression execution.
 
