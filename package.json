@@ -1,5 +1,5 @@
 {
-  "name": "qa-portfolio",
+  "name": "test-automation-and-validation",
   "private": true,
   "scripts": {
     "test": "playwright test",
